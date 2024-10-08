@@ -9,7 +9,7 @@ import loupe from "../../icons/loupe.svg";
 
 const Header = () => {
   return (
-    <>
+    <div className="bg-white">
       <div className="container">
         <div className={style.header}>
           <div className="flex items-center">
@@ -39,7 +39,7 @@ const Header = () => {
         </div>
       </div>
       <hr />
-    </>
+    </div>
   );
 };
 
