@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 
+import style from "../../pages/Products/products.module.css";
 import catalog from "../../icons/catalog.svg";
 import arrow from "../../icons/arrow.svg";
 import arrow_filters from "../../icons/arrow_filters.svg";
 import filters from "../../icons/filters.svg";
 import plane from "../../icons/plane.svg";
+import { useGetProductsQuery } from "../../api/productsApi/productsApi";
+import Card from "../../componets/card/Card";
 
 const Products = () => {
+  const { data = [] } = useGetProductsQuery();
+
   const categoryShoes: string[] = ["Кроссовки", "Кеды", "Ботинки"];
 
   const brands: string[] = ["Nike", "Adidas", "Assics", "Jordan"];
@@ -29,7 +34,7 @@ const Products = () => {
 
   return (
     <div className="flex">
-      <div className="w-[20%]">
+      <div className={style.left_side}>
         {/* Каталог */}
         <div
           className="flex items-center justify-between py-5 cursor-pointer relative border-b"
@@ -256,11 +261,13 @@ const Products = () => {
 
         {/* Будьте в курсе наших акций и новостей  */}
       </div>
-      {/* <div className="w-[80%]">
-        {data.map((item) => (
-          <Card key={item.id} {...item} />
-        ))}
-      </div> */}
+      <div className={style.right_side}>
+        <div className={style.content}>
+          {data.map((item) => (
+            <Card key={item.id} {...item} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

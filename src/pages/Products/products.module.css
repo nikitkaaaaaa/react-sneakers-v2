@@ -1,0 +1,21 @@
+.left_side {
+  width: 20%;
+  margin-right: 80px;
+}
+.right_side {
+  width: 80%;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 80px 15px;
+}
+
+.title_product {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
