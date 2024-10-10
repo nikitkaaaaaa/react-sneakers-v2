@@ -18,9 +18,10 @@ const LeftSide = ({
   setPriceFrom,
   priceTo,
   setPriceTo,
+  onChoiseCategory,
 }: LeftSideInterface) => {
   const categoryShoes: string[] = ["Кроссовки", "Кеды", "Ботинки"];
-  const brands: string[] = ["Nike", "Adidas", "Assics", "Jordan"];
+  const brands: string[] = ["Nike", "Adidas", "Asics", "Jordan"];
   const genders: string[] = ["Мужской", "Женский"];
   const seasons: string[] = ["Лето", "Осень", "Зима", "Весна"];
 
@@ -59,6 +60,7 @@ const LeftSide = ({
   return (
     <div>
       {/* Каталог */}
+
       <div
         className="flex items-center justify-between py-5 cursor-pointer relative border-b"
         onClick={() => setOpenCatalog(!openCatalog)}
@@ -86,12 +88,13 @@ const LeftSide = ({
             key={index}
             className="border-b border-l border-r hover:bg-white cursor-pointer"
           >
-            <div className="ml-5 py-2">{item}</div>
+            <div className="ml-5 py-2" onClick={() => onChoiseCategory(item)}>
+              {item}
+            </div>
           </div>
         ))}
       </div>
       {/* Каталог */}
-
       {/* Фильтр */}
       <div
         className="border-b  flex items-center justify-between py-5 cursor-pointer"
@@ -109,7 +112,6 @@ const LeftSide = ({
           }`}
         />
       </div>
-
       <div
         className={`overflow-hidden transition-max-height duration-500 ease-in-out ${
           openFilter ? "max-h-[665px]" : "max-h-0"
@@ -285,9 +287,7 @@ const LeftSide = ({
         {/* Фильтр по сезону */}
       </div>
       {/* Фильтр */}
-
       {/* Будьте в курсе наших акций и новостей  */}
-
       <div
         className="mt-10 border px-4 py-6 flex
        flex-col justify-center items-center rounded-sm
@@ -299,7 +299,6 @@ const LeftSide = ({
           Будьте в курсе наших акций и новостей
         </div>
       </div>
-
       {/* Будьте в курсе наших акций и новостей  */}
     </div>
   );

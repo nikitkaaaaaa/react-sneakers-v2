@@ -7,6 +7,7 @@ import RightSide from "./RightSide/RightSide";
 import ChoiseProducts from "../../componets/choiseProducts/ChoiseProducts";
 
 const Products = () => {
+  const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [selectedGender, setSelectedGender] = useState<string[]>([]);
   const [selectedSeason, setSelectedSeason] = useState<string[]>([]);
@@ -16,6 +17,7 @@ const Products = () => {
   const [choise, setChoise] = useState<string>("-price");
 
   const { data = [] } = useGetProductsQuery({
+    category: selectedCategory,
     brands: selectedBrands,
     gender: selectedGender.length > 0 ? selectedGender : undefined,
     seasons: selectedSeason,
@@ -38,10 +40,12 @@ const Products = () => {
           setPriceFrom={setPpriceFrom}
           priceTo={priceTo}
           setPriceTo={setPriceTo}
+          onChoiseCategory={(value) => setSelectedCategory(value)}
         />
       </div>
 
       <div className={style.right_side}>
+        {data.length}
         <div className="">
           <ChoiseProducts
             onChoise={(value) => setChoise(value)}

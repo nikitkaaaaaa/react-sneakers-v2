@@ -4,6 +4,7 @@ import arrow_small from "../../icons/arrow_filters.svg";
 
 interface ChoiseProductsProps {
   onChoise: (value: string) => void;
+
   choise: string;
 }
 
