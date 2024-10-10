@@ -23,7 +23,7 @@ const Header = () => {
           <div className="relative">
             <input
               type="text"
-              className="border border-gray-500 w-[900px] outline-none rounded-md pl-10 pr-3 py-1"
+              className="border border-gray-500 w-[1100px] outline-none rounded-md pl-10 pr-3 py-1"
             />
             <img
               src={loupe}

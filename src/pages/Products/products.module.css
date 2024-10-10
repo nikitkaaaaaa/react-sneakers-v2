@@ -8,8 +8,9 @@
 
 .content {
   display: grid;
+  margin-top: 40px;
   grid-template-columns: repeat(3, 1fr);
-  gap: 80px 15px;
+  gap: 80px 20px;
 }
 
 .title_product {
