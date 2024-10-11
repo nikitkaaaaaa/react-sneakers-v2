@@ -95,6 +95,7 @@ const LeftSide = ({
         ))}
       </div>
       {/* Каталог */}
+
       {/* Фильтр */}
       <div
         className="border-b  flex items-center justify-between py-5 cursor-pointer"
@@ -287,6 +288,7 @@ const LeftSide = ({
         {/* Фильтр по сезону */}
       </div>
       {/* Фильтр */}
+
       {/* Будьте в курсе наших акций и новостей  */}
       <div
         className="mt-10 border px-4 py-6 flex

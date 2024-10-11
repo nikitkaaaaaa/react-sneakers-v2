@@ -27,6 +27,7 @@ export const productsApi = createApi({
         category,
       }) => {
         const params = new URLSearchParams();
+
         if (category) params.append("category", category);
 
         if (choiseProducts) {

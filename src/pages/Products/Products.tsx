@@ -27,31 +27,72 @@ const Products = () => {
   });
 
   return (
-    <div className="flex">
-      <div className={style.left_side}>
-        <LeftSide
-          selectedBrands={selectedBrands}
-          setSelectedBrands={setSelectedBrands}
-          selectedGender={selectedGender}
-          setSelectedGender={setSelectedGender}
-          selectedSeason={selectedSeason}
-          setSelectedSeason={setSelectedSeason}
-          priceFrom={priceFrom}
-          setPriceFrom={setPpriceFrom}
-          priceTo={priceTo}
-          setPriceTo={setPriceTo}
-          onChoiseCategory={(value) => setSelectedCategory(value)}
-        />
-      </div>
+    <div>
+      {/* Выбранные параметры фильтры */}
+      <div className="mt-10 mb-6">
+        {selectedCategory && (
+          <span className="px-2 py-1 rounded-md shadow-md mr-2">
+            {selectedCategory}
+          </span>
+        )}
 
-      <div className={style.right_side}>
-        <div className="">
-          <ChoiseProducts
-            onChoise={(value) => setChoise(value)}
-            choise={choise}
+        {selectedBrands &&
+          selectedBrands.map((item, index) => (
+            <span className=" px-2 py-1 rounded-md shadow-md mx-2" key={index}>
+              {item}
+            </span>
+          ))}
+
+        {priceFrom && (
+          <span className=" px-2 py-1 rounded-md shadow-md mx-2">
+            от {priceFrom} ₽
+          </span>
+        )}
+
+        {priceTo && (
+          <span className=" px-2 py-1 rounded-md shadow-md mx-2">
+            до {priceTo} ₽
+          </span>
+        )}
+        {selectedSeason &&
+          selectedSeason.map((item, index) => (
+            <span className=" px-2 py-1 rounded-md shadow-md mx-2" key={index}>
+              {item}
+            </span>
+          ))}
+
+        {selectedGender.length > 0 && (
+          <span className="px-2 py-1 rounded-md shadow-md mx-2">
+            {selectedGender.join(", ")}
+          </span>
+        )}
+      </div>
+      {/* Выбранные параметры фильтры */}
+      <hr />
+      <div className="flex">
+        <div className={style.left_side}>
+          <LeftSide
+            selectedBrands={selectedBrands}
+            setSelectedBrands={setSelectedBrands}
+            selectedGender={selectedGender}
+            setSelectedGender={setSelectedGender}
+            selectedSeason={selectedSeason}
+            setSelectedSeason={setSelectedSeason}
+            priceFrom={priceFrom}
+            setPriceFrom={setPpriceFrom}
+            priceTo={priceTo}
+            setPriceTo={setPriceTo}
+            onChoiseCategory={(value) => setSelectedCategory(value)}
           />
         </div>
-        <div>
+        <div className={style.right_side}>
+          <div>
+            <ChoiseProducts
+              onChoise={(value) => setChoise(value)}
+              choise={choise}
+            />
+          </div>
+
           <RightSide products={data} />
         </div>
       </div>
