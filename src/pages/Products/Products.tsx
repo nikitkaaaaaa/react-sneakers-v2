@@ -45,14 +45,13 @@ const Products = () => {
       </div>
 
       <div className={style.right_side}>
-        {data.length}
         <div className="">
           <ChoiseProducts
             onChoise={(value) => setChoise(value)}
             choise={choise}
           />
         </div>
-        <div className={style.content}>
+        <div>
           <RightSide products={data} />
         </div>
       </div>
