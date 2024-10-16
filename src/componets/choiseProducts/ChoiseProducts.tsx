@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 
-import arrow_small from "../../icons/arrow_filters.svg";
+import arrow_small from "../../assets/icons/arrow_filters.svg";
 
 interface ChoiseProductsProps {
   onChoise: (value: string) => void;
-
   choise: string;
 }
 

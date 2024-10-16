@@ -56,7 +56,11 @@ export const productsApi = createApi({
         return `products?${params}`;
       },
     }),
+
+    getProductId: builder.query<IntefraceProducts, number>({
+      query: (id) => `/products/${id}`,
+    }),
   }),
 });
 
-export const { useGetProductsQuery } = productsApi;
+export const { useGetProductsQuery, useGetProductIdQuery } = productsApi;

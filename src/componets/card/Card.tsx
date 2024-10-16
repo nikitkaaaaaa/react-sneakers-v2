@@ -1,8 +1,11 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 import style from "../../pages/Products/products.module.css";
-import favorites from "../../icons/favorites.svg";
-import pacman from "../../icons/pacman.svg";
+import favorites from "../../assets/icons/favorites.svg";
+import pacman from "../../assets/icons/pacman.svg";
+import { routes } from "../../routes/routes";
 
 interface CardInteface {
   id: number;
@@ -13,7 +16,7 @@ interface CardInteface {
 
 const Card = ({ id, title, imageUrL, price }: CardInteface) => {
   return (
-    <div className=" relative">
+    <Link className=" relative" to={routes.product.replace(":id", String(id))}>
       <img src={imageUrL[0]} alt={title} />
       <div className={style.title_product}>{title}</div>
       <div className="mt-5 font-bold">{price} ₽</div>
@@ -25,7 +28,7 @@ const Card = ({ id, title, imageUrL, price }: CardInteface) => {
         </div>
         <div className="text-xs ml-2">x 2 в Сплит</div>
       </div>
-    </div>
+    </Link>
   );
 };
 

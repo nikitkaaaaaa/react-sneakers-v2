@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
 import style from "../../pages/Products/products.module.css";
-import LeftSide from "./LeftSide/LeftSide";
+import LeftSideProducts from "./LeftSideProducts/LeftSideProducts";
 import { useGetProductsQuery } from "../../api/productsApi/productsApi";
-import RightSide from "./RightSide/RightSide";
+import RightSide from "./RightSideProducts/RightSideProducts";
 import ChoiseProducts from "../../componets/choiseProducts/ChoiseProducts";
 
 const Products = () => {
@@ -16,7 +16,7 @@ const Products = () => {
 
   const [choise, setChoise] = useState<string>("-price");
 
-  const { data = [] } = useGetProductsQuery({
+  const { data = [], isLoading } = useGetProductsQuery({
     category: selectedCategory,
     brands: selectedBrands,
     gender: selectedGender.length > 0 ? selectedGender : undefined,
@@ -29,40 +29,46 @@ const Products = () => {
   return (
     <div>
       {/* Выбранные параметры фильтры */}
-      <div className="mt-10 mb-6">
+      <div className="mt-10 mb-8 ">
         {selectedCategory && (
-          <span className="px-2 py-1 rounded-md shadow-md mr-2">
+          <span className="px-2 py-1.5 rounded-md shadow-md mr-2 bg-gray-100">
             {selectedCategory}
           </span>
         )}
 
         {selectedBrands &&
           selectedBrands.map((item, index) => (
-            <span className=" px-2 py-1 rounded-md shadow-md mx-2" key={index}>
+            <span
+              className=" px-2 py-1.5 rounded-md shadow-md mx-2 bg-gray-100"
+              key={index}
+            >
               {item}
             </span>
           ))}
 
         {priceFrom && (
-          <span className=" px-2 py-1 rounded-md shadow-md mx-2">
+          <span className=" px-2 py-1.5 rounded-md shadow-md mx-2 bg-gray-100">
             от {priceFrom} ₽
           </span>
         )}
 
         {priceTo && (
-          <span className=" px-2 py-1 rounded-md shadow-md mx-2">
+          <span className=" px-2 py-1.5 rounded-md shadow-md mx-2 bg-gray-100">
             до {priceTo} ₽
           </span>
         )}
         {selectedSeason &&
           selectedSeason.map((item, index) => (
-            <span className=" px-2 py-1 rounded-md shadow-md mx-2" key={index}>
+            <span
+              className=" px-2 py-1.5 rounded-md shadow-md mx-2 bg-gray-100"
+              key={index}
+            >
               {item}
             </span>
           ))}
 
         {selectedGender.length > 0 && (
-          <span className="px-2 py-1 rounded-md shadow-md mx-2">
+          <span className="px-2 py-1.5 rounded-md shadow-md mx-2 bg-gray-100">
             {selectedGender.join(", ")}
           </span>
         )}
@@ -71,7 +77,7 @@ const Products = () => {
       <hr />
       <div className="flex">
         <div className={style.left_side}>
-          <LeftSide
+          <LeftSideProducts
             selectedBrands={selectedBrands}
             setSelectedBrands={setSelectedBrands}
             selectedGender={selectedGender}

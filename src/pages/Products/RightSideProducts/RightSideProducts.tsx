@@ -3,13 +3,13 @@ import React from "react";
 import style from "../products.module.css";
 import Card from "../../../componets/card/Card";
 import IntefraceProducts from "../../../api/productsApi/IntefraceProducts";
-import empty_products from "../../../icons/empty_products.svg";
+import empty_products from "../../../assets/icons/empty_products.svg";
 
 interface RightSideProps {
   products: IntefraceProducts[];
 }
 
-const RightSide = ({ products }: RightSideProps) => {
+const RightSideProducts = ({ products }: RightSideProps) => {
   return (
     <div>
       {products.length >= 1 ? (
@@ -30,4 +30,4 @@ const RightSide = ({ products }: RightSideProps) => {
   );
 };
 
-export default RightSide;
+export default RightSideProducts;

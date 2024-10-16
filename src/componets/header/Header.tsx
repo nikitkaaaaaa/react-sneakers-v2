@@ -1,11 +1,14 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 import style from "../header/header.module.css";
-import favorites from "../../icons/favorites.svg";
-import logo from "../../icons/logo.svg";
-import user from "../../icons/user.svg";
-import cart from "../../icons/cart.svg";
-import loupe from "../../icons/loupe.svg";
+import favorites from "../../assets/icons/favorites.svg";
+import logo from "../../assets/icons/logo.svg";
+import user from "../../assets/icons/user.svg";
+import cart from "../../assets/icons/cart.svg";
+import loupe from "../../assets/icons/loupe.svg";
+import { routes } from "../../routes/routes";
 
 const Header = () => {
   return (
@@ -13,7 +16,9 @@ const Header = () => {
       <div className="container">
         <div className={style.header}>
           <div className="flex items-center">
-            <img src={logo} alt="logo" />
+            <Link to={routes.home}>
+              <img src={logo} alt="logo" />
+            </Link>
             <div className="ml-3">
               <div className="font-bold text-xl">SNEAKERS</div>
               <div className="text-gray-500">лучшие кросоки у нас</div>
