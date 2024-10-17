@@ -5,6 +5,7 @@ import LeftSideProducts from "./LeftSideProducts/LeftSideProducts";
 import { useGetProductsQuery } from "../../api/productsApi/productsApi";
 import RightSide from "./RightSideProducts/RightSideProducts";
 import ChoiseProducts from "../../componets/choiseProducts/ChoiseProducts";
+import Loading from "../../componets/loading/Loading";
 
 const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("");
@@ -26,9 +27,11 @@ const Products = () => {
     choiseProducts: choise,
   });
 
+  if (isLoading) return <Loading />;
+
   return (
     <div>
-      {/* Выбранные параметры фильтры */}
+      {/* Выбранные параметры фильтров */}
       <div className="mt-10 mb-8 ">
         {selectedCategory && (
           <span className="px-2 py-1.5 rounded-md shadow-md mr-2 bg-gray-100">
@@ -73,7 +76,7 @@ const Products = () => {
           </span>
         )}
       </div>
-      {/* Выбранные параметры фильтры */}
+      {/* Выбранные параметры фильтров */}
       <hr />
       <div className="flex">
         <div className={style.left_side}>

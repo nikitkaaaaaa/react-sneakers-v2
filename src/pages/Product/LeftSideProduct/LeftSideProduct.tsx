@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import favorites from "../../../assets/icons/favorites.svg";
 import arrow from "../../../assets/icons/arrow.svg";
 import LeftSideInterface from "./LeftSideInterface";
+import { useGetProductIdQuery } from "../../../api/productsApi/productsApi";
+import Loading from "../../../componets/loading/Loading";
 
 const LeftSideProduct = ({
   title,
@@ -14,6 +16,8 @@ const LeftSideProduct = ({
   infoProduct,
 }: LeftSideInterface) => {
   const [selectedTabIndex, setSelectedTabIndex] = useState<number>(0);
+
+  const { data, isLoading } = useGetProductIdQuery(1);
 
   const handleNext = () => {
     if (imageUrl) {
@@ -32,6 +36,8 @@ const LeftSideProduct = ({
       setCurrentImage(imageUrl[prevIndex]);
     }
   };
+
+  if (isLoading) return <Loading />;
 
   return (
     <div>
