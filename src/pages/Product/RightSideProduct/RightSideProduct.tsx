@@ -8,6 +8,8 @@ import nike from "../../../assets/png/nike";
 import adidas from "../../../assets/png/adidas";
 import jordan from "../../../assets/png/jordan";
 import ConsultationForm from "../../../componets/forms/consultationForm/ConsultationForm";
+import ConsultationSection from "../../../componets/sections/ConsultationSection";
+import BrandsProductsSection from "../../../componets/sections/BrandsProductsSection";
 
 interface RightSideProps {
   price: number | undefined;
@@ -92,41 +94,11 @@ const RightSideProduct = ({ price, brand }: RightSideProps) => {
       {/* Соц сети  */}
 
       {/* Перейти к продуктам конкретного бренда */}
-      <div className="border p-[30px] mt-20 rounded-sm">
-        <Link to={"/products/brand/"}>
-          <img
-            src={currentBrandImg}
-            alt="name"
-            className="max-w-[70px] max-h-[50px]"
-          />
-        </Link>
-        <Link to={"/products/brand/"}>
-          <div className="mb-2 mt-4">Все товары категории</div>
-        </Link>
-        <Link to={"/products/brand/"}>
-          <div>Все товары бренда {brand}</div>
-        </Link>
-      </div>
+      <BrandsProductsSection brand={brand} brandImg={currentBrandImg} />
       {/* Перейти к продуктам конкретного бренда */}
 
       {/* консультанция */}
-      <div
-        className="border group  rounded-sm mt-8 flex flex-col justify-center items-center text-center hover:bg-white hover:transform hover:-translate-y-0.5
-                   hover:shadow-lg transition-transform duration-300 pt-[40px]"
-      >
-        <img src={consultation} alt="consultation" />
-        <div className="my-4 px-[15px]">Нужна консультация?</div>
-        <div className="text-sm px-[15px]">
-          Наши специалисты ответят на любой интересующий вопрос
-        </div>
-
-        <button
-          className="w-full rounded-sm mt-4 py-3.5 border-t text-sm t group-hover:bg-red-700 transition-colors duration-300 group-hover:text-white"
-          onClick={() => setShowСonsultation(true)}
-        >
-          ЗАДАТЬ ВОПРОС
-        </button>
-      </div>
+      <ConsultationSection openConsultation={() => setShowСonsultation(true)} />
       {/* консультанция */}
 
       {/* Форма консультации */}

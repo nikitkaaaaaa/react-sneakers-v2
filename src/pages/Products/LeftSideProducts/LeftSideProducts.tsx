@@ -4,8 +4,8 @@ import arrow from "../../../assets/icons/arrow.svg";
 import arrow_filters from "../../../assets/icons/arrow_filters.svg";
 import catalog from "../../../assets/icons/catalog.svg";
 import filters from "../../../assets/icons/filters.svg";
-import plane from "../../../assets/icons/plane.svg";
 import LeftSideInterface from "./LeftSideInterface";
+import NewsLetterSection from "../../../componets/sections/NewsLetterSection";
 
 const LeftSideProducts = ({
   selectedBrands,
@@ -293,17 +293,7 @@ const LeftSideProducts = ({
       {/* Фильтр */}
 
       {/* Будьте в курсе наших акций и новостей  */}
-      <div
-        className="mt-10 border px-4 py-6 flex
-       flex-col justify-center items-center rounded-sm
-         hover:bg-white hover:transform hover:-translate-y-0.5
-          hover:shadow-lg transition-transform duration-300"
-      >
-        <img src={plane} alt="plane" />
-        <div className="text-center mt-4">
-          Будьте в курсе наших акций и новостей
-        </div>
-      </div>
+      <NewsLetterSection />
       {/* Будьте в курсе наших акций и новостей  */}
     </div>
   );

@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 
 import style from "../consultationForm/ConsultationForm.module.css";
-import closeFormConsuiltation from "../../../assets/icons/closeFormConsuiltation.svg";
+import closeFormConsuiltation from "../../../assets/icons/closeForm.svg";
 import { useForm } from "react-hook-form";
 import { useAddConsultationMessageApiMutation } from "../../../api/consultationMessageApi/consultationMessageApi";
-import InterfaceForm from "./InerfaceForm";
+import InerfaceFormConsultation from "./InerfaceFormConsultation";
 
 interface ConsultationFormProps {
   showСonsultation: boolean;
@@ -20,7 +20,7 @@ const ConsultationForm = ({
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<InterfaceForm>();
+  } = useForm<InerfaceFormConsultation>();
 
   const [isChecked, setIsChecked] = useState<boolean>(true);
 
@@ -31,8 +31,8 @@ const ConsultationForm = ({
   const [AddConsultationMessageApiMutation] =
     useAddConsultationMessageApiMutation();
 
-  const handleOnSubmit = async (data: InterfaceForm) => {
-    const obj: InterfaceForm = {
+  const handleOnSubmit = async (data: InerfaceFormConsultation) => {
+    const obj: InerfaceFormConsultation = {
       name: data.name,
       message: data.message,
       email: data.email,
@@ -40,13 +40,14 @@ const ConsultationForm = ({
     };
 
     try {
+      closeСonsultation();
       await AddConsultationMessageApiMutation(obj).unwrap();
       reset();
       alert("Ваше сообщение отправлено!");
     } catch (error) {
+      closeСonsultation();
       alert("Не удалось отправить сообщение!");
     }
-    closeСonsultation();
   };
 
   useEffect(() => {
