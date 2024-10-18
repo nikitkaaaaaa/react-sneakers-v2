@@ -7,6 +7,7 @@ import asics from "../../../assets/png/asics";
 import nike from "../../../assets/png/nike";
 import adidas from "../../../assets/png/adidas";
 import jordan from "../../../assets/png/jordan";
+import ConsultationForm from "../../../componets/forms/consultationForm/ConsultationForm";
 
 interface RightSideProps {
   price: number | undefined;
@@ -17,6 +18,8 @@ const RightSideProduct = ({ price, brand }: RightSideProps) => {
   const [currentSize, setcurrnetSize] = useState<number>(0);
 
   const [currentBrandImg, setCurrentBrandImg] = useState<string>("");
+
+  const [showСonsultation, setShowСonsultation] = useState<boolean>(false);
 
   useEffect(() => {
     if (brand === "Asics") {
@@ -117,11 +120,21 @@ const RightSideProduct = ({ price, brand }: RightSideProps) => {
           Наши специалисты ответят на любой интересующий вопрос
         </div>
 
-        <button className="w-full rounded-sm mt-4 py-3.5 border-t text-sm t group-hover:bg-red-700 transition-colors duration-300 group-hover:text-white">
+        <button
+          className="w-full rounded-sm mt-4 py-3.5 border-t text-sm t group-hover:bg-red-700 transition-colors duration-300 group-hover:text-white"
+          onClick={() => setShowСonsultation(true)}
+        >
           ЗАДАТЬ ВОПРОС
         </button>
       </div>
       {/* консультанция */}
+
+      {/* Форма консультации */}
+      <ConsultationForm
+        showСonsultation={showСonsultation}
+        closeСonsultation={() => setShowСonsultation(false)}
+      />
+      {/* Форма консультации */}
     </div>
   );
 };
