@@ -19,6 +19,7 @@ const LeftSideProducts = ({
   priceTo,
   setPriceTo,
   onChoiseCategory,
+  isBrandPage,
 }: LeftSideInterface) => {
   const categoryShoes: string[] = ["Кроссовки", "Кеды", "Ботинки"];
   const brands: string[] = ["Nike", "Adidas", "Asics", "Jordan"];
@@ -166,44 +167,46 @@ const LeftSideProducts = ({
           {/* Фильтр по цене */}
 
           {/* Фильтр по брендам */}
-          <div className="hover:bg-white">
-            <div className="border-l border-r border-b cursor-pointer">
-              <div
-                className="flex justify-between items-center  py-2"
-                onClick={() => setShowFilterBrands(!showFilterBrand)}
-              >
-                <div className="ml-3">Бренд</div>
-                <img
-                  src={arrow_filters}
-                  alt="arrow_filters"
-                  className={`transition-transform duration-400 mr-3 ${
-                    !showFilterBrand ? "rotate-0" : "rotate-180"
-                  }`}
-                />
+          {!isBrandPage && (
+            <div className="hover:bg-white">
+              <div className="border-l border-r border-b cursor-pointer">
+                <div
+                  className="flex justify-between items-center  py-2"
+                  onClick={() => setShowFilterBrands(!showFilterBrand)}
+                >
+                  <div className="ml-3">Бренд</div>
+                  <img
+                    src={arrow_filters}
+                    alt="arrow_filters"
+                    className={`transition-transform duration-400 mr-3 ${
+                      !showFilterBrand ? "rotate-0" : "rotate-180"
+                    }`}
+                  />
+                </div>
               </div>
-            </div>
 
-            <div
-              className={`overflow-hidden transition-max-height duration-500 ease-in-out ${
-                showFilterBrand ? "max-h-40" : "max-h-0"
-              }`}
-            >
-              <div className="p-3 hover:bg-white border-l border-r border-b cursor-pointer">
-                {brands.map((brand) => (
-                  <div key={brand} className="flex items-center">
-                    <input
-                      type="checkbox"
-                      id={brand}
-                      onChange={() => handleSelectedBrands(brand)}
-                    />
-                    <label htmlFor={brand} className="ml-3 block w-full ">
-                      {brand}
-                    </label>
-                  </div>
-                ))}
+              <div
+                className={`overflow-hidden transition-max-height duration-500 ease-in-out ${
+                  showFilterBrand ? "max-h-40" : "max-h-0"
+                }`}
+              >
+                <div className="p-3 hover:bg-white border-l border-r border-b cursor-pointer">
+                  {brands.map((brand) => (
+                    <div key={brand} className="flex items-center">
+                      <input
+                        type="checkbox"
+                        id={brand}
+                        onChange={() => handleSelectedBrands(brand)}
+                      />
+                      <label htmlFor={brand} className="ml-3 block w-full ">
+                        {brand}
+                      </label>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
+          )}
           {/* Фильтр по брендам */}
 
           {/* Фильтр по полу */}
