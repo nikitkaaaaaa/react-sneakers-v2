@@ -31,53 +31,6 @@ const Products = () => {
 
   return (
     <div>
-      {/* Выбранные параметры фильтров */}
-      <div className="mt-10 mb-8 ">
-        {selectedCategory && (
-          <span className="px-2 py-1.5 rounded-md shadow-md mr-2 bg-gray-100">
-            {selectedCategory}
-          </span>
-        )}
-
-        {selectedBrands &&
-          selectedBrands.map((item, index) => (
-            <span
-              className=" px-2 py-1.5 rounded-md shadow-md mx-2 bg-gray-100"
-              key={index}
-            >
-              {item}
-            </span>
-          ))}
-
-        {priceFrom && (
-          <span className=" px-2 py-1.5 rounded-md shadow-md mx-2 bg-gray-100">
-            от {priceFrom} ₽
-          </span>
-        )}
-
-        {priceTo && (
-          <span className=" px-2 py-1.5 rounded-md shadow-md mx-2 bg-gray-100">
-            до {priceTo} ₽
-          </span>
-        )}
-        {selectedSeason &&
-          selectedSeason.map((item, index) => (
-            <span
-              className=" px-2 py-1.5 rounded-md shadow-md mx-2 bg-gray-100"
-              key={index}
-            >
-              {item}
-            </span>
-          ))}
-
-        {selectedGender.length > 0 && (
-          <span className="px-2 py-1.5 rounded-md shadow-md mx-2 bg-gray-100">
-            {selectedGender.join(", ")}
-          </span>
-        )}
-      </div>
-      {/* Выбранные параметры фильтров */}
-      <hr />
       <div className="flex">
         <div className={style.left_side}>
           <LeftSideProducts

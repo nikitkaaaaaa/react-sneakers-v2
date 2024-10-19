@@ -4,3 +4,11 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 80px 20px;
 }
+
+.left_side {
+  width: 20%;
+  margin-right: 80px;
+}
+.right_side {
+  width: 80%;
+}
