@@ -48,7 +48,14 @@ const Product = () => {
       </div>
 
       <div className={style.right_side}>
-        <RightSideProduct price={data?.price} brand={data?.brand} />
+        <RightSideProduct
+          price={data?.price}
+          brand={data?.brand}
+          title={data?.title}
+          imageUrl={data?.imageUrL[0]}
+          parentId={id}
+          id={id}
+        />
       </div>
     </div>
   );

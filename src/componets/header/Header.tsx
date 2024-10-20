@@ -38,7 +38,9 @@ const Header = () => {
           </div>
           <div className="flex  w-[100px] justify-between">
             <img src={favorites} alt="favorites" />
-            <img src={cart} alt="cart" />
+            <Link to={routes.cart}>
+              <img src={cart} alt="cart" />
+            </Link>
             <img src={user} alt="user" />
           </div>
         </div>

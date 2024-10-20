@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { size, socials } from "../arrs/arrs";
-import consultation from "../../../assets/icons/consultation.svg";
 import asics from "../../../assets/png/asics";
 import nike from "../../../assets/png/nike";
 import adidas from "../../../assets/png/adidas";
@@ -10,18 +9,63 @@ import jordan from "../../../assets/png/jordan";
 import ConsultationForm from "../../../componets/forms/consultationForm/ConsultationForm";
 import ConsultationSection from "../../../componets/sections/ConsultationSection";
 import BrandsProductsSection from "../../../componets/sections/BrandsProductsSection";
+import {
+  useAddProductToCartMutation,
+  useGetProductsCartQuery,
+} from "../../../api/cartApi/cartApi";
+import InerfaceCart from "../../../api/cartApi/InerfaceCart";
+import { routes } from "../../../routes/routes";
 
 interface RightSideProps {
   price: number | undefined;
   brand: string | undefined;
+  title: string | undefined;
+  imageUrl: string | undefined;
+  parentId: string | undefined;
+  id: string | undefined;
 }
 
-const RightSideProduct = ({ price, brand }: RightSideProps) => {
+const RightSideProduct = ({
+  price,
+  brand,
+  title,
+  imageUrl,
+  parentId,
+  id,
+}: RightSideProps) => {
+  const navigate = useNavigate();
+
   const [currentSize, setcurrnetSize] = useState<number>(0);
 
   const [currentBrandImg, setCurrentBrandImg] = useState<string>("");
 
   const [showСonsultation, setShowСonsultation] = useState<boolean>(false);
+
+  const { data = [] } = useGetProductsCartQuery();
+
+  const [addProductToCart] = useAddProductToCartMutation<InerfaceCart>();
+
+  const productInCart = data.find(
+    (item) => item.parentId === id && item.size === size[currentSize]
+  );
+
+  const handleAddProductToCart = async () => {
+    try {
+      const product = {
+        price: price,
+        brand: brand,
+        title: title,
+        imageUrl: imageUrl,
+        size: size[currentSize],
+        parentId: parentId,
+        id: id,
+        count: 1,
+      };
+      await addProductToCart(product).unwrap();
+    } catch (error) {
+      alert("Не удалось положить товар в корзину!");
+    }
+  };
 
   useEffect(() => {
     if (brand === "Asics") {
@@ -65,8 +109,13 @@ const RightSideProduct = ({ price, brand }: RightSideProps) => {
 
       {/* Покупка продукта */}
       <>
-        <button className=" border w-full text-center bg-white  border-black mt-5 rounded py-3 px-5 text-xs">
-          В КОРЗИНУ
+        <button
+          className=" border w-full text-center bg-white  border-black mt-5 rounded py-3 px-5 text-xs"
+          onClick={
+            productInCart ? () => navigate(routes.cart) : handleAddProductToCart
+          }
+        >
+          {productInCart ? "В КОРЗИНЕ" : "В КОРЗИНУ"}
         </button>
         <button className="w-full text-center text-white bg-black mt-2 rounded py-4 px-5 text-xs">
           КУПИТЬ В 1 КЛИК

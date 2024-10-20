@@ -56,8 +56,9 @@ const Products = () => {
           <>
             <div className="text-gray-500 mt-8 mb-4">
               <span>
-                <Link to={routes.home}>{"< - "}Главная</Link>
+                <Link to={routes.home}>Главная</Link>
               </span>
+              <span className="mx-2">—</span> Кросовки
             </div>
           </>
         )}
