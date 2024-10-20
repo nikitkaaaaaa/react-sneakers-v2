@@ -15,6 +15,7 @@ import {
 } from "../../../api/cartApi/cartApi";
 import InerfaceCart from "../../../api/cartApi/InerfaceCart";
 import { routes } from "../../../routes/routes";
+import BuyProduct from "../../../componets/sections/BuyProduct";
 
 interface RightSideProps {
   price: number | undefined;
@@ -117,9 +118,12 @@ const RightSideProduct = ({
         >
           {productInCart ? "В КОРЗИНЕ" : "В КОРЗИНУ"}
         </button>
-        <button className="w-full text-center text-white bg-black mt-2 rounded py-4 px-5 text-xs">
-          КУПИТЬ В 1 КЛИК
-        </button>
+
+        <BuyProduct
+          style={
+            "w-full text-center text-white bg-black mt-2 rounded py-4  text-xs"
+          }
+        />
       </>
       {/* Покупка продукта */}
 

@@ -2,6 +2,7 @@ import React, { useMemo } from "react";
 
 import style from "../cart.module.css";
 import InerfaceCart from "../../../api/cartApi/InerfaceCart";
+import BuyProduct from "../../../componets/sections/BuyProduct";
 
 interface RightSideCartProps {
   products: InerfaceCart[];
@@ -24,9 +25,9 @@ const RightSideCart = ({ products }: RightSideCartProps) => {
           <div>Итого</div>
           <div>{totalPrice}₽</div>
         </div>
-        <button className="border w-full text-sm rounded border border-black py-2 mt-6">
-          КУПИТЬ В 1 КЛИК
-        </button>
+        <BuyProduct
+          style={"border w-full text-sm rounded border border-black py-2 mt-6"}
+        />
         <button className="border w-full text-sm rounded bg-black text-white py-2.5 border border-black mt-4">
           ПЕРЕЙТИ К ОФОРМЛЕНИЮ
         </button>
