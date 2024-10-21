@@ -56,10 +56,11 @@ const OrderForm = () => {
 
   const handleOnSubmit = async (data: interfaceOrderForm) => {
     try {
+      navigate(routes.home);
       setTimeout(() => {
-        reset();
-        navigate(routes.home);
-      }, 3000);
+        alert("Вы оформили корзину!");
+      }, 1500);
+      reset();
       handleClearCart();
       await addProductToPurchasedProducts({
         products: cartProducts || [],
