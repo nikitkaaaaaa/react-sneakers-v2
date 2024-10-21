@@ -1,21 +1,12 @@
 import React, { useMemo } from "react";
 
 import style from "../orderForm.module.css";
-import { useGetProductsCartQuery } from "../../../../api/cartApi/cartApi";
 
-const RightSideOrderForm = () => {
-  const { data: cartProducts } = useGetProductsCartQuery();
+interface RightSideOrderFormProps {
+  totalPrice: number;
+}
 
-  const totalPrice = useMemo(() => {
-    if (!cartProducts) return 0;
-    return cartProducts.reduce((sum, product) => {
-      if (product.price && product.count) {
-        return sum + product.price * product.count;
-      }
-      return sum;
-    }, 0);
-  }, [cartProducts]);
-
+const RightSideOrderForm = ({ totalPrice }: RightSideOrderFormProps) => {
   return (
     <div className={style.rightSideOrderForm}>
       <div className=" flex justify-between items-center font-bold text-lg">

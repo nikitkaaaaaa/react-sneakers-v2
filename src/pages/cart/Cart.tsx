@@ -13,9 +13,15 @@ const Cart = () => {
   return (
     <div>
       <div className="text-3xl mt-5">Корзина</div>
-      <div className="flex mt-5">
-        <LeftSideCart products={data} />
-        <RightSideCart products={data} />
+      <div>
+        {data.length <= 0 ? (
+          <div>net novarov</div>
+        ) : (
+          <div className="flex mt-5">
+            <LeftSideCart products={data} />
+            <RightSideCart products={data} />
+          </div>
+        )}
       </div>
     </div>
   );

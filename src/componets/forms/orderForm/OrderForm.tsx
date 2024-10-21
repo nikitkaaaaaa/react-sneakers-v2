@@ -1,20 +1,78 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 
 import RightSideOrderForm from "./RightSideOrderForm/RightSideOrderForm";
 import LeftSIdeOrderForm from "./LeftSIdeOrderForm/LeftSIdeOrderForm";
 import { useForm } from "react-hook-form";
 import interfaceOrderForm from "./interfaceOrderForm/InterfaceOrderForm";
 import DeliveryMethod from "./deliveryMethod/DeliveryMethod";
+import { useAddProductToPurchasedProductsMutation } from "../../../api/purchasedProductsApi/purchasedProducts";
+import {
+  useGetProductsCartQuery,
+  useRemoveProductInCartMutation,
+} from "../../../api/cartApi/cartApi";
+import { useNavigate } from "react-router-dom";
+import { routes } from "../../../routes/routes";
 
 const OrderForm = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<interfaceOrderForm>();
 
-  const handleOnSubmit = (data: interfaceOrderForm) => {
-    console.log(data);
+  const { data: cartProducts } = useGetProductsCartQuery();
+
+  const navigate = useNavigate();
+
+  const totalPrice = useMemo(() => {
+    if (!cartProducts) return 0;
+    return cartProducts.reduce((sum, product) => {
+      if (product.price && product.count) {
+        return sum + product.price * product.count;
+      }
+      return sum;
+    }, 0);
+  }, [cartProducts]);
+
+  const [addProductToPurchasedProducts] =
+    useAddProductToPurchasedProductsMutation();
+
+  const [removeProductInCart] = useRemoveProductInCartMutation();
+
+  const handleClearCart = async () => {
+    if (!cartProducts || cartProducts.length === 0) return;
+    try {
+      for (let i = 0; i < cartProducts.length; i++) {
+        const productId = cartProducts[i].id;
+        if (productId) {
+          await removeProductInCart(productId).unwrap();
+        }
+      }
+    } catch (error) {
+      alert(`Не удалось очистить корзину!`);
+    }
+  };
+
+  const handleOnSubmit = async (data: interfaceOrderForm) => {
+    try {
+      setTimeout(() => {
+        reset();
+        navigate(routes.home);
+      }, 3000);
+      handleClearCart();
+      await addProductToPurchasedProducts({
+        products: cartProducts || [],
+        totalPrice: totalPrice,
+        name: data.name,
+        phone: data.phone,
+        email: data.email,
+        massage: data.message,
+        deliveryAddress: data.deliveryAddress,
+      }).unwrap();
+    } catch (error) {
+      alert("Не удалось оформить!");
+    }
   };
 
   return (
@@ -22,7 +80,7 @@ const OrderForm = () => {
       <form className=" mt-5" onSubmit={handleSubmit(handleOnSubmit)}>
         <div className="flex justify-between ">
           <LeftSIdeOrderForm register={register} errors={errors} />
-          <RightSideOrderForm />
+          <RightSideOrderForm totalPrice={totalPrice} />
         </div>
         <div className="flex justify-between">
           <DeliveryMethod register={register} errors={errors} />
