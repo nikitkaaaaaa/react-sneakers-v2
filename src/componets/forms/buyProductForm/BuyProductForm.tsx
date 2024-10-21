@@ -21,7 +21,7 @@ const BuyProductForm = ({
     formState: { errors },
   } = useForm<InertfaceBuyProductForm>();
 
-  const [selectedMethod, setSelectedMethod] = useState("telegram");
+  const [selectedMethod, setSelectedMethod] = useState<string>("telegram");
 
   const typeConnection: { title: string; value: string }[] = [
     { title: "Telegram", value: "telegram" },

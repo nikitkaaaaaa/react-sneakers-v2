@@ -40,8 +40,12 @@ const LeftSideCart = ({ products }: LeftSideCartProps) => {
           </div>
         </div>
       </div>
-      {products.map((item) => (
-        <CartCard {...item} key={item.id} />
+      {products.map((item, index) => (
+        <CartCard
+          {...item}
+          key={item.id}
+          isLastItem={index === products.length - 1}
+        />
       ))}
     </div>
   );

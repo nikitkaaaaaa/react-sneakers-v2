@@ -19,6 +19,7 @@ interface CartCardProps {
   id: string | undefined;
   count: number | undefined;
   parentId: string | undefined;
+  isLastItem: boolean;
 }
 
 const CartCard = ({
@@ -29,6 +30,7 @@ const CartCard = ({
   id,
   count,
   parentId,
+  isLastItem,
 }: CartCardProps) => {
   const [removeProductInCart] = useRemoveProductInCartMutation();
 
@@ -64,7 +66,11 @@ const CartCard = ({
   };
 
   return (
-    <div className="border-b flex justify-between py-[40px] mx-[27px] items-center">
+    <div
+      className={`flex justify-between py-[40px] mx-[27px] items-center ${
+        isLastItem ? "" : "border-b"
+      }`}
+    >
       <div className="bsorder border-blue-400 flex">
         <Link to={routes.product.replace(":id", String(parentId))}>
           <img src={imageUrl} alt={title} className="w-[105px] mr-5" />
