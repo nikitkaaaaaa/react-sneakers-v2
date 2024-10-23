@@ -5,6 +5,8 @@ import closeFormConsuiltation from "../../../assets/icons/closeForm.svg";
 import { useForm } from "react-hook-form";
 import { useAddConsultationMessageApiMutation } from "../../../api/consultationMessageApi/consultationMessageApi";
 import InerfaceFormConsultation from "./InerfaceFormConsultation";
+import useClickOutside from "../../hooks/useCloseBlock";
+import useDisableScroll from "../../hooks/useDisableScroll";
 
 interface ConsultationFormProps {
   showСonsultation: boolean;
@@ -50,32 +52,11 @@ const ConsultationForm = ({
     }
   };
 
-  useEffect(() => {
-    if (showСonsultation) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [showСonsultation]);
-
   const formRef = useRef<HTMLDivElement>(null);
 
-  const handleClickOutside = (event: MouseEvent) => {
-    if (formRef.current && !formRef.current.contains(event.target as Node)) {
-      closeСonsultation();
-    }
-  };
+  useClickOutside(formRef, closeСonsultation); // кастомный хук для закрытия окна вне нажатия его
 
-  useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+  useDisableScroll(showСonsultation); // кастомный хук для отмены скрола при открытии блока
 
   return (
     <>

@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 import style from "./searchBlock.module.css";
 import IntefraceProducts from "../../api/productsApi/IntefraceProducts";
 import { routes } from "../../routes/routes";
+import useClickOutside from "../hooks/useCloseBlock";
 
 interface SearchBlockProps {
   showSearchBlock: boolean;
   products: IntefraceProducts[] | undefined;
-
   closeSearchBlock: () => void;
 }
 
@@ -20,18 +20,7 @@ const SearchBlock = ({
 }: SearchBlockProps) => {
   const formRef = useRef<HTMLDivElement>(null);
 
-  const handleClickOutside = (event: MouseEvent) => {
-    if (formRef.current && !formRef.current.contains(event.target as Node)) {
-      closeSearchBlock();
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+  useClickOutside(formRef, closeSearchBlock); // кастомный хук для закрытия окна вне нажатия его
 
   return (
     <>

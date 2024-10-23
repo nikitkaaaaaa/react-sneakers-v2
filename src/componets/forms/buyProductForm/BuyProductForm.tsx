@@ -4,6 +4,8 @@ import style from "../buyProductForm/byProductForm.module.css";
 import close_form from "../../../assets/icons/closeForm.svg";
 import { useForm } from "react-hook-form";
 import InertfaceBuyProductForm from "./InertfaceBuyProductForm";
+import useClickOutside from "../../hooks/useCloseBlock";
+import useDisableScroll from "../../hooks/useDisableScroll";
 
 interface BuyProductFormProps {
   showFormBuyProduct: boolean;
@@ -41,30 +43,9 @@ const BuyProductForm = ({
 
   const formRef = useRef<HTMLDivElement>(null);
 
-  const handleClickOutside = (event: MouseEvent) => {
-    if (formRef.current && !formRef.current.contains(event.target as Node)) {
-      closeForm();
-    }
-  };
+  useClickOutside(formRef, closeForm); // кастомный хук для закрытия окна вне нажатия его
 
-  useEffect(() => {
-    if (showFormBuyProduct) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [showFormBuyProduct]);
-
-  useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+  useDisableScroll(showFormBuyProduct); // кастомный хук для отмены скрола при открытии блока
 
   return (
     <>

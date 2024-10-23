@@ -5,6 +5,8 @@ import closeFormImg from "../../../assets/icons/closeForm.svg";
 import { useForm } from "react-hook-form";
 import InerfaceFormNewLeter from "./InerfaceFormNewLeter";
 import { useAddNewsLetterMutation } from "../../../api/newsLetterApi/newsLetterApi";
+import useClickOutside from "../../hooks/useCloseBlock";
+import useDisableScroll from "../../hooks/useDisableScroll";
 
 interface NewsletterFormProps {
   showNewsLetter: boolean;
@@ -35,30 +37,9 @@ const NewsletterForm = ({ showNewsLetter, closeForm }: NewsletterFormProps) => {
 
   const formRef = useRef<HTMLDivElement>(null);
 
-  const handleClickOutside = (event: MouseEvent) => {
-    if (formRef.current && !formRef.current.contains(event.target as Node)) {
-      closeForm();
-    }
-  };
+  useClickOutside(formRef, closeForm); // кастомный хук для закрытия окна вне нажатия его
 
-  useEffect(() => {
-    if (showNewsLetter) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [showNewsLetter]);
-
-  useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+  useDisableScroll(showNewsLetter); // кастомный хук для отмены скрола при открытии блока
 
   return (
     <>
