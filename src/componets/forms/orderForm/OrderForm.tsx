@@ -72,7 +72,9 @@ const OrderForm = () => {
         deliveryAddress: data.deliveryAddress,
       }).unwrap();
     } catch (error) {
-      alert("Не удалось оформить!");
+      setTimeout(() => {
+        alert("Не удалось оформить!");
+      }, 1500);
     }
   };
 

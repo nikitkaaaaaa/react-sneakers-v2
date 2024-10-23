@@ -18,7 +18,7 @@ const Cart = () => {
       <div className="text-3xl mt-5">Корзина</div>
       <div>
         {data.length <= 0 ? (
-          // странца при пустой корзины
+          // страница при пустой корзины
           <div className=" mt-5 flex justify-center">
             <div className=" text-center">
               <div className="flex justify-center">

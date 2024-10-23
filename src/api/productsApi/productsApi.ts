@@ -8,6 +8,7 @@ export const productsApi = createApi({
     getProducts: builder.query<
       IntefraceProducts[],
       {
+        title?: string;
         category?: string;
         gender?: string[];
         brands?: string[];
@@ -18,6 +19,7 @@ export const productsApi = createApi({
       }
     >({
       query: ({
+        title,
         gender,
         brands,
         seasons,
@@ -29,6 +31,8 @@ export const productsApi = createApi({
         const params = new URLSearchParams();
 
         if (category) params.append("category", category);
+
+        if (title) params.append("title", `*${title}*`);
 
         if (choiseProducts) {
           params.append("sortBy", choiseProducts);
