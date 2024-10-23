@@ -38,6 +38,8 @@ const Product = () => {
       <div className={style.left_side}>
         <LeftSideProduct
           title={data?.title}
+          id={id}
+          price={data?.price}
           imageUrl={data?.imageUrL}
           currentImage={currentImage}
           currentInfoProduct={currentInfoProduct}

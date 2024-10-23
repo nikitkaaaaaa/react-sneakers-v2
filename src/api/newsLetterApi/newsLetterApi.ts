@@ -7,7 +7,7 @@ export const newsLetterApi = createApi({
   endpoints: (builder) => ({
     addNewsLetter: builder.mutation<void, InerfaceFormNewLeter>({
       query: (body) => ({
-        url: "/newsLetter",
+        url: "newsLetter",
         method: "POST",
         body,
       }),

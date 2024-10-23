@@ -1,5 +1,7 @@
 export default interface LeftSideInterface {
   title: string | undefined;
+  id: string | undefined;
+  price: number | undefined;
   imageUrl: string[] | undefined;
   currentImage: string;
   currentInfoProduct: string | JSX.Element;

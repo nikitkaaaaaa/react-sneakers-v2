@@ -10,6 +10,7 @@ import Home from "../pages/home/Home";
 import Product from "../pages/Product/Product";
 import Cart from "../pages/cart/Cart";
 import Order from "../pages/order/Order";
+import Favorites from "../pages/favorites/Favorites";
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
           <Route path={routes.productBrands} element={<Products />}></Route>
           <Route path={routes.cart} element={<Cart />}></Route>
           <Route path={routes.order} element={<Order />}></Route>
+          <Route path={routes.favorites} element={<Favorites />}></Route>
         </Routes>
       </div>
     </div>

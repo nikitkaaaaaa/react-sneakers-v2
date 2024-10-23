@@ -7,7 +7,7 @@ export const cartApi = createApi({
   tagTypes: ["Cart"],
   endpoints: (builder) => ({
     getProductsCart: builder.query<InerfaceCart[], void>({
-      query: () => "/cart",
+      query: () => "cart",
       providesTags: [{ type: "Cart", id: "LIST" }],
     }),
 

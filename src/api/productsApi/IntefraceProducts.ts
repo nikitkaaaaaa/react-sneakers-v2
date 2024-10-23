@@ -1,5 +1,5 @@
 export default interface IntefraceProducts {
-  id: number;
+  id: string;
   category: string;
   title: string;
   brand: string;

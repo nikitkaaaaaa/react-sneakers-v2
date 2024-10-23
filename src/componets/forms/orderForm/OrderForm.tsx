@@ -5,7 +5,7 @@ import LeftSIdeOrderForm from "./LeftSIdeOrderForm/LeftSIdeOrderForm";
 import { useForm } from "react-hook-form";
 import interfaceOrderForm from "./interfaceOrderForm/InterfaceOrderForm";
 import DeliveryMethod from "./deliveryMethod/DeliveryMethod";
-import { useAddProductToPurchasedProductsMutation } from "../../../api/purchasedProductsApi/purchasedProducts";
+import { useAddProductToPurchasedProductsMutation } from "../../../api/purchasedProductsApi/purchasedProductsApi";
 import {
   useGetProductsCartQuery,
   useRemoveProductInCartMutation,

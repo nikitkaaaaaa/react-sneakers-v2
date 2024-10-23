@@ -8,7 +8,7 @@ export const consultationMessageApi = createApi({
     addConsultationMessageApi: builder.mutation<void, InerfaceFormConsultation>(
       {
         query: (body) => ({
-          url: "/consultationMessage",
+          url: "consultationMessage",
           method: "POST",
           body,
         }),

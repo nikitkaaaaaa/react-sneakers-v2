@@ -5,4 +5,5 @@ export const routes = {
   productBrands: "/products/:brand",
   cart: "/cart",
   order: "/order",
+  favorites: "/favorites",
 };

@@ -65,7 +65,9 @@ const Header = () => {
           {/* Блок поиска продуктов */}
 
           <div className="flex w-[100px] justify-between">
-            <img src={favorites} alt="favorites" />
+            <Link to={routes.favorites}>
+              <img src={favorites} alt="favorites" />
+            </Link>
             <Link to={routes.cart}>
               <img src={cart} alt="cart" />
             </Link>

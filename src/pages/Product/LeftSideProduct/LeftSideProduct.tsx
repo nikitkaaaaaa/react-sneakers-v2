@@ -1,12 +1,20 @@
 import React, { useEffect, useState } from "react";
 
 import favorites from "../../../assets/icons/favorites.svg";
+import favorites_added from "../../../assets/icons/favorites_added.svg";
 import arrow from "../../../assets/icons/arrow.svg";
 import LeftSideInterface from "./LeftSideInterface";
 import { useGetProductIdQuery } from "../../../api/productsApi/productsApi";
 import Loading from "../../../componets/loading/Loading";
+import {
+  useAddProductToFavoritesMutation,
+  useGetFavoritesProductsQuery,
+  useRemoveProductInFavoritesMutation,
+} from "../../../api/favoritesProductsApi/favoritesProductsApi";
 
 const LeftSideProduct = ({
+  id,
+  price,
   title,
   imageUrl,
   currentImage,
@@ -18,6 +26,42 @@ const LeftSideProduct = ({
   const [selectedTabIndex, setSelectedTabIndex] = useState<number>(0);
 
   const { data, isLoading } = useGetProductIdQuery(1);
+
+  const { data: favoritesProducts } = useGetFavoritesProductsQuery();
+
+  const productInFavorites = favoritesProducts?.find(
+    (obj) => obj.parentId === String(id)
+  );
+
+  const [addProductToFavorites] = useAddProductToFavoritesMutation();
+
+  const [removeProductInFavorites] = useRemoveProductInFavoritesMutation();
+
+  const handleAddProductToFavorites = async (event: React.MouseEvent) => {
+    event.stopPropagation();
+    if (!title || !id || !imageUrl || !price) return;
+    try {
+      await addProductToFavorites({
+        id,
+        title,
+        imageUrL: imageUrl[0],
+        price,
+        parentId: id,
+      }).unwrap();
+    } catch (error) {
+      alert("Не удалось добавить товар в избранное!");
+    }
+  };
+
+  const handleRemoveProductToFavorites = async (event: React.MouseEvent) => {
+    event.stopPropagation();
+    if (!productInFavorites) return;
+    try {
+      await removeProductInFavorites(productInFavorites.id).unwrap();
+    } catch (error) {
+      alert("Не удалось добавить товар в избранное!");
+    }
+  };
 
   const handleNext = () => {
     if (imageUrl) {
@@ -52,9 +96,14 @@ const LeftSideProduct = ({
               className="  borsder border-black  w-full h-full"
             />
             <img
-              src={favorites}
+              src={productInFavorites ? favorites_added : favorites}
               alt="favorites"
               className="absolute top-0 right-0 border w-10 p-2 cursor-pointer rounded-lg"
+              onClick={
+                productInFavorites
+                  ? handleRemoveProductToFavorites
+                  : handleAddProductToFavorites
+              }
             />
           </div>
 
