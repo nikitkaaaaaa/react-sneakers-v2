@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import reviews from "../../../assets/icons/reviews.svg";
 import star from "../../../assets/icons/star.svg";
+import ReviewsForm from "../../../componets/forms/reviewsForm/ReviewsForm";
 
 const Reviews = () => {
   const reviewsArr: { date: string; name: string; description: string }[] = [
@@ -19,6 +20,8 @@ const Reviews = () => {
     },
   ];
 
+  const [showReviews, setShowReviews] = useState<boolean>(false);
+
   return (
     <div>
       <div className="flex">
@@ -29,7 +32,10 @@ const Reviews = () => {
             картах
           </div>
 
-          <button className="border-2 border-[#A10000] rounded py-2 px-3.5 flex justify-center items-center">
+          <button
+            className="border-2 border-[#A10000] rounded py-2 px-3.5 flex justify-center items-center"
+            onClick={() => setShowReviews(true)}
+          >
             <img src={reviews} alt="reviews" />
           </button>
         </div>
@@ -60,6 +66,10 @@ const Reviews = () => {
         </div>
         {/* Вывод каротчек отзывов */}
       </div>
+      <ReviewsForm
+        showReviews={showReviews}
+        closeForm={() => setShowReviews(false)}
+      />
     </div>
   );
 };

@@ -90,7 +90,7 @@ const BuyProductForm = ({
               <>
                 <div className="flex justify-between items-center text-gray-500 mt-6 mb-1">
                   <div>Телефон</div>
-                  {errors.name && (
+                  {errors.phone && (
                     <div className="text-red-600">{errors.phone?.message}</div>
                   )}
                 </div>

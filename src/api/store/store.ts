@@ -6,6 +6,7 @@ import { newsLetterApi } from "../newsLetterApi/newsLetterApi";
 import { cartApi } from "../cartApi/cartApi";
 import { favoritesProductsApi } from "../favoritesProductsApi/favoritesProductsApi";
 import { purchasedProductsApi } from "../purchasedProductsApi/purchasedProductsApi";
+import { reviewsFormApi } from "../reviewsFormApi/reviewsFormApi";
 
 const store = configureStore({
   reducer: {
@@ -15,6 +16,7 @@ const store = configureStore({
     [cartApi.reducerPath]: cartApi.reducer,
     [purchasedProductsApi.reducerPath]: purchasedProductsApi.reducer,
     [favoritesProductsApi.reducerPath]: favoritesProductsApi.reducer,
+    [reviewsFormApi.reducerPath]: reviewsFormApi.reducer,
   },
   middleware: (m) =>
     m().concat(
@@ -23,7 +25,8 @@ const store = configureStore({
       newsLetterApi.middleware,
       cartApi.middleware,
       purchasedProductsApi.middleware,
-      favoritesProductsApi.middleware
+      favoritesProductsApi.middleware,
+      reviewsFormApi.middleware
     ),
 });
 
