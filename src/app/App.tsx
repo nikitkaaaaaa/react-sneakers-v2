@@ -16,9 +16,13 @@ const App = () => {
   return (
     <div>
       <Header />
+
+      <Routes>
+        <Route path={routes.home} element={<Home />}></Route>
+      </Routes>
+
       <div className="container">
         <Routes>
-          <Route path={routes.home} element={<Home />}></Route>
           <Route path={routes.products} element={<Products />}></Route>
           <Route path={routes.products} element={<Products />}></Route>
           <Route path={routes.product} element={<Product />}></Route>
