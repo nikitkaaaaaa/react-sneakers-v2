@@ -11,10 +11,13 @@ import Product from "../pages/Product/Product";
 import Cart from "../pages/cart/Cart";
 import Order from "../pages/order/Order";
 import Favorites from "../pages/favorites/Favorites";
+import Footer from "../componets/footer/Footer";
+import { useGetProductsQuery } from "../api/productsApi/productsApi";
 
 const App = () => {
+  const { isLoading } = useGetProductsQuery({});
   return (
-    <div>
+    <>
       <Header />
 
       <Routes>
@@ -32,7 +35,9 @@ const App = () => {
           <Route path={routes.favorites} element={<Favorites />}></Route>
         </Routes>
       </div>
-    </div>
+
+      <Footer isLoading={isLoading} />
+    </>
   );
 };
 
