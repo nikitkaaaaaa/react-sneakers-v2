@@ -69,7 +69,10 @@ const Card = ({ id, title, imageUrL, price }: CardProps) => {
             : handleAddProductToFavorites
         }
       />
-      <Link to={routes.product.replace(":id", String(id))}>
+      <Link
+        to={routes.product.replace(":id", String(id))}
+        onClick={() => window.scrollTo({ top: 0 })}
+      >
         <img src={imageUrL[0]} alt={title} />
         <div className={style.title_product}>{title}</div>
         <div className="mt-5 font-bold">{price} ₽</div>

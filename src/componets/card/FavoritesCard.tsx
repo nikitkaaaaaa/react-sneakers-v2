@@ -40,7 +40,12 @@ const FavoritesCard = ({
         className="absolute top-2 right-2 cursor-pointer"
         onClick={handleRemoveProductInFavorites}
       />
-      <Link to={routes.product.replace(":id", parentId)}>
+      <Link
+        to={routes.product.replace(":id", parentId)}
+        onClick={() => {
+          window.scrollTo({ top: 0 });
+        }}
+      >
         <img src={imageUrL} alt={title} />
         <div className={style.title_product}>{title}</div>
         <div className="mt-5 font-bold">{price} ₽</div>

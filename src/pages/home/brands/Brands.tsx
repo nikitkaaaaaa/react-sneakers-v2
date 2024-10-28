@@ -21,6 +21,9 @@ const Brands = () => {
         <Link
           to={routes.productBrands.replace(":brand", item.routes)}
           key={index}
+          onClick={() => {
+            window.scrollTo({ top: 0 });
+          }}
         >
           <img
             src={item.imageUrl}

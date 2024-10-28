@@ -20,7 +20,12 @@ const Home = () => {
   return (
     <div>
       {/* <Link to={routes.products}>продукты</Link> */}
-      <Link to={routes.product.replace(":id", "43")}>
+      <Link
+        to={routes.product.replace(":id", "43")}
+        onClick={() => {
+          window.scrollTo({ top: 0 });
+        }}
+      >
         <div
           style={{ backgroundImage: `url(${banner})` }}
           className=" h-[490px] bg-cover bg-center mb-16"

@@ -43,12 +43,20 @@ const ProductsOffered = () => {
             <Link
               to={routes.productBrands.replace(":brand", item.brand)}
               className="mt-5 font-bold hover:text-[#A10000]"
+              onClick={() => {
+                window.scrollTo({ top: 0 });
+              }}
             >
               {item.brand}
             </Link>
           </div>
           <div className="borsder border-blue-600 w-[60%]">
-            <Link to={routes.productBrands.replace(":brand", item.brand)}>
+            <Link
+              to={routes.productBrands.replace(":brand", item.brand)}
+              onClick={() => {
+                window.scrollTo({ top: 0 });
+              }}
+            >
               <img src={item.imageUrl} alt={item.brand} />
             </Link>
           </div>

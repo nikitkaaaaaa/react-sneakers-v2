@@ -72,11 +72,21 @@ const CartCard = ({
       }`}
     >
       <div className="bsorder border-blue-400 flex">
-        <Link to={routes.product.replace(":id", String(parentId))}>
+        <Link
+          to={routes.product.replace(":id", String(parentId))}
+          onClick={() => {
+            window.scrollTo({ top: 0 });
+          }}
+        >
           <img src={imageUrl} alt={title} className="w-[105px] mr-5" />
         </Link>
         <div>
-          <Link to={routes.product.replace(":id", String(parentId))}>
+          <Link
+            to={routes.product.replace(":id", String(parentId))}
+            onClick={() => {
+              window.scrollTo({ top: 0 });
+            }}
+          >
             <div className={style.title_cart}>{title}</div>
           </Link>
           <div className="text-gray-500">

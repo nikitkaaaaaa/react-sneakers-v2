@@ -30,7 +30,10 @@ const SearchBlock = ({
             {products?.map((item) => (
               <Link
                 to={routes.product.replace(":id", String(item.id))}
-                onClick={closeSearchBlock}
+                onClick={() => {
+                  window.scrollTo({ top: 0 });
+                  closeSearchBlock();
+                }}
               >
                 <div key={item.id} className="py-3 hover:bg-[#f8f8f8]">
                   <div className="ml-3 flex items-center text-sm">
