@@ -20,7 +20,7 @@ const App = () => {
     <>
       <Header />
 
-      <Routes>
+      {/* <Routes>
         <Route path={routes.home} element={<Home />}></Route>
       </Routes>
 
@@ -34,9 +34,9 @@ const App = () => {
           <Route path={routes.order} element={<Order />}></Route>
           <Route path={routes.favorites} element={<Favorites />}></Route>
         </Routes>
-      </div>
-
-      <Footer isLoading={isLoading} />
+      </div> */}
+      {/* 
+      <Footer isLoading={isLoading} /> */}
     </>
   );
 };

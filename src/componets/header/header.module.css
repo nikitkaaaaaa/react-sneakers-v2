@@ -4,3 +4,54 @@
   align-items: center;
   padding: 12px 0px;
 }
+
+.logo {
+  width: 65px;
+}
+
+.name_store {
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.best_sneakers_text {
+  color: #96a1a5;
+}
+
+.block_search_prosucts {
+  position: relative;
+  width: 60%;
+}
+
+@media (max-width: 992px) {
+  .logo {
+    width: 45px;
+  }
+
+  .name_store {
+    font-size: 20px;
+    line-height: 20px;
+  }
+
+  .block_search_prosucts {
+    width: 55%;
+  }
+}
+
+@media (max-width: 768px) {
+  .block_search_prosucts {
+    width: 50%;
+  }
+}
+
+@media (max-width: 576px) {
+  .name_store,
+  .best_sneakers_text {
+    display: none;
+  }
+
+  .block_search_prosucts {
+    width: 63%;
+  }
+}

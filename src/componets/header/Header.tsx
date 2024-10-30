@@ -23,16 +23,16 @@ const Header = () => {
         <div className={style.header}>
           <div className="flex items-center">
             <Link to={routes.home}>
-              <img src={logo} alt="logo" />
+              <img src={logo} alt="logo" className={style.logo} />
             </Link>
             <div className="ml-3">
-              <div className="font-bold text-xl">SNEAKERS</div>
-              <div className="text-gray-500">лучшие кроссовки у нас</div>
+              <div className={style.name_store}>SNEAKERS</div>
+              <div className={style.best_sneakers_text}>лучшие кроссовки</div>
             </div>
           </div>
 
           {/* Блок поиска продуктов */}
-          <div className="relative w-[60%]">
+          <div className={style.block_search_prosucts}>
             <div>
               <input
                 type="text"
@@ -64,14 +64,13 @@ const Header = () => {
           </div>
           {/* Блок поиска продуктов */}
 
-          <div className="flex w-[100px] justify-between">
+          <div className="flex  justify-between items-center">
             <Link to={routes.favorites}>
-              <img src={favorites} alt="favorites" />
+              <img src={favorites} alt="favorites" className="mr-2" />
             </Link>
             <Link to={routes.cart}>
               <img src={cart} alt="cart" />
             </Link>
-            <img src={user} alt="user" />
           </div>
         </div>
       </div>
