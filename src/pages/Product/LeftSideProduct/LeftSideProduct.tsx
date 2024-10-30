@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from "react";
 
+import style from "../product.module.css";
 import favorites from "../../../assets/icons/favorites.svg";
 import favorites_added from "../../../assets/icons/favorites_added.svg";
 import arrow from "../../../assets/icons/arrow.svg";
 import LeftSideInterface from "./LeftSideInterface";
-import { useGetProductIdQuery } from "../../../api/productsApi/productsApi";
+import {
+  useGetProductIdQuery,
+  useGetProductsQuery,
+} from "../../../api/productsApi/productsApi";
 import Loading from "../../../componets/loading/Loading";
 import {
   useAddProductToFavoritesMutation,
   useGetFavoritesProductsQuery,
   useRemoveProductInFavoritesMutation,
 } from "../../../api/favoritesProductsApi/favoritesProductsApi";
+import Card from "../../../componets/card/Card";
 
 const LeftSideProduct = ({
   id,
@@ -28,6 +33,8 @@ const LeftSideProduct = ({
   const { data, isLoading } = useGetProductIdQuery(1);
 
   const { data: favoritesProducts } = useGetFavoritesProductsQuery();
+
+  const { data: products } = useGetProductsQuery({});
 
   const productInFavorites = favoritesProducts?.find(
     (obj) => obj.parentId === String(id)
@@ -172,6 +179,17 @@ const LeftSideProduct = ({
         <div className="mt-4">{currentInfoProduct}</div>
       </div>
       {/* Информация о продукте */}
+
+      {/* Рекомендованные продукты */}
+      <div>
+        <div className="text-2xl mt-10">Рекомендуем</div>
+        <div className={style.recommendation}>
+          {products?.slice(3, 7).map((item) => (
+            <Card key={item.id} {...item} />
+          ))}
+        </div>
+      </div>
+      {/* Рекомендованные продукты */}
     </div>
   );
 };

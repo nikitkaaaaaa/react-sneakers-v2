@@ -1,10 +1,20 @@
 .left_side {
   width: 80%;
   /* border: 1px solid red; */
+
   margin-right: 40px;
 }
 
 .right_side {
   width: 20%;
-  /* border: 1px solid blue; */
+  /* 
+  border: 1px solid blue; */
+}
+
+.recommendation {
+  display: grid;
+  margin-top: 94px;
+
+  grid-template-columns: repeat(4, 1fr);
+  gap: 80px 20px;
 }

@@ -81,7 +81,7 @@ const RightSideProduct = ({
   }, [brand]);
 
   return (
-    <div className="mt-10">
+    <div className="mt-10  sticky top-3">
       <div className="text-2xl font-bold opacity-65">от {price} ₽</div>
 
       {/* Размеры продукта */}
