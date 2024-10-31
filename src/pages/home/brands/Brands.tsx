@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import style from "../home.module.css";
 import nike from "../../../assets/png/nike";
 import adidas from "../../../assets/png/adidas";
 import asics from "../../../assets/png/asics";
@@ -16,11 +17,12 @@ const Brands = () => {
   ];
 
   return (
-    <div className=" flex items-center justify-between w-[40%] m-auto mb-5">
+    <div className={style.icon_brands}>
       {brands.map((item, index) => (
         <Link
           to={routes.productBrands.replace(":brand", item.routes)}
           key={index}
+          className=" flex justify-center"
           onClick={() => {
             window.scrollTo({ top: 0 });
           }}

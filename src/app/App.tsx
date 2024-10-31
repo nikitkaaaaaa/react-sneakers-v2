@@ -20,10 +20,10 @@ const App = () => {
     <>
       <Header />
 
-      {/* <Routes>
+      <Routes>
         <Route path={routes.home} element={<Home />}></Route>
       </Routes>
-
+      {/* 
       <div className="container">
         <Routes>
           <Route path={routes.products} element={<Products />}></Route>
@@ -34,8 +34,8 @@ const App = () => {
           <Route path={routes.order} element={<Order />}></Route>
           <Route path={routes.favorites} element={<Favorites />}></Route>
         </Routes>
-      </div> */}
-      {/* 
+      </div>
+
       <Footer isLoading={isLoading} /> */}
     </>
   );

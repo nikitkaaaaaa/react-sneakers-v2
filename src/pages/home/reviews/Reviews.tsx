@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import style from "../home.module.css";
 import reviews from "../../../assets/icons/reviews.svg";
 import star from "../../../assets/icons/star.svg";
 import ReviewsForm from "../../../componets/forms/reviewsForm/ReviewsForm";
@@ -24,8 +25,8 @@ const Reviews = () => {
 
   return (
     <div>
-      <div className="flex">
-        <div className="w-[30%]">
+      <div className={style.reviews}>
+        <div className={style.reviews_left_side}>
           <div className="text-2xl">О нас пишут</div>
           <div className="text-gray-500 my-5">
             Все отзывы в данном блоке взяты из карточки нашей компании в Яндекс
@@ -40,11 +41,11 @@ const Reviews = () => {
           </button>
         </div>
         {/* Вывод каротчек отзывов */}
-        <div className="w-[70%] flex items-center  relative">
-          <div className="flex">
+        <div className="w-full lg:w-[70%] flex items-center  relative ">
+          <div className={style.reviews_right_side}>
             {reviewsArr.map((item, index) => (
               <div
-                className="w-[50%] mx-[0.5px] border bg-white py-[29px] px-[39px] e hover:transform hover:-translate-y-0.5
+                className="w-full lg:w-[50%] mb-2 mx-[0.5px] border  bg-white py-[29px] px-[39px]  hover:transform hover:-translate-y-0.5
               hover:shadow-lg transition-transform duration-300"
                 key={index}
               >

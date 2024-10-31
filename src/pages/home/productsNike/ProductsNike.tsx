@@ -11,7 +11,7 @@ interface ProductsNikeProps {
 const ProductsNike = ({ products }: ProductsNikeProps) => {
   return (
     <>
-      <div className="text-2xl mb-24">Nike</div>
+      <div className="text-2xl mb-12 lg:mb-24">Nike</div>
       <div className={style.products_nike}>
         {products
           .filter((item) => item.brand === "Nike")

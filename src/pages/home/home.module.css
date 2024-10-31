@@ -2,7 +2,7 @@
   display: grid;
   margin-top: 40px;
   grid-template-columns: repeat(3, 1fr);
-  gap: 80px 80px;
+  gap: 80px;
 }
 
 .products_offered {
@@ -12,11 +12,43 @@
   gap: 30px;
 }
 
+.products_offered_item {
+  display: flex;
+  padding: 20px 27px;
+  border-radius: 4px;
+}
+
 .products_nike {
   display: grid;
   margin-top: 40px;
   grid-template-columns: repeat(4, 1fr);
   gap: 30px;
+}
+
+.icon_brands {
+  display: grid;
+  width: 55%;
+  margin: auto;
+  align-items: center;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.reviews {
+  display: flex;
+}
+
+.reviews_left_side {
+  width: 30%;
+}
+
+.reviews_right_side {
+  display: flex;
+}
+
+.product_day {
+  display: flex;
+  /* border: 1px solid red; */
+  width: 70%;
 }
 
 .title_product {
@@ -25,4 +57,63 @@
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+}
+
+@media (max-width: 992px) {
+  .best_offers,
+  .products_nike {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 60px;
+  }
+
+  .products_offered_item {
+    padding: 0px 20px 40px 20px;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .icon_brands {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px 0px;
+  }
+
+  .reviews {
+    flex-direction: column;
+  }
+
+  .reviews_left_side {
+    width: 100%;
+    margin-bottom: 35px;
+  }
+
+  .reviews_right_side {
+    flex-direction: column;
+  }
+
+  .product_day {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .products_offered {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .products_offered_item {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .icon_brands {
+    width: 85%;
+  }
+
+  .best_offers,
+  .products_nike {
+    gap: 60px 15px;
+  }
 }

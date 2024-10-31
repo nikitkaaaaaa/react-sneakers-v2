@@ -20,6 +20,7 @@ const Home = () => {
   return (
     <div>
       {/* <Link to={routes.products}>продукты</Link> */}
+      {/* Баннер */}
       <Link
         to={routes.product.replace(":id", "43")}
         onClick={() => {
@@ -31,6 +32,7 @@ const Home = () => {
           className=" h-[490px] bg-cover bg-center mb-16"
         ></div>
       </Link>
+      {/* Баннер */}
 
       <div className="container">
         <BestOffers products={products} />

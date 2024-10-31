@@ -37,9 +37,9 @@ const ProductsOffered = () => {
   return (
     <div className={style.products_offered}>
       {arr.map((item, index) => (
-        <div className="shadow flex px-7 rounded" key={index}>
-          <div className="bsorder border-red-600 w-[40%] text-center flex flex-col justify-center items-center">
-            <div className="uppercase text-sm">{item.title}</div>
+        <div className={`${style.products_offered_item} shadow`} key={index}>
+          <div className=" w-[100%] lg:w-[40%] text-center flex flex-col justify-center items-center">
+            <div className="uppercase text-sm mt-5 lg:mt-0">{item.title}</div>
             <Link
               to={routes.productBrands.replace(":brand", item.brand)}
               className="mt-5 font-bold hover:text-[#A10000]"
@@ -50,7 +50,7 @@ const ProductsOffered = () => {
               {item.brand}
             </Link>
           </div>
-          <div className="borsder border-blue-600 w-[60%]">
+          <div className="w-[60%]">
             <Link
               to={routes.productBrands.replace(":brand", item.brand)}
               onClick={() => {
