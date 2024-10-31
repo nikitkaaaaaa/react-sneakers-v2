@@ -13,7 +13,7 @@ const Favorites = () => {
 
   return (
     <div>
-      <div className="text-3xl mt-5">Избранные товары</div>
+      <div className="text-3xl mt-5 mb-12 md:mb-24">Избранные товары</div>
       {(favoritesProducts?.length ?? 0) > 0 ? (
         <div className={style.content}>
           {favoritesProducts?.map((item) => (

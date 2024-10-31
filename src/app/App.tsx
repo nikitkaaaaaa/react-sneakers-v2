@@ -23,7 +23,7 @@ const App = () => {
       <Routes>
         <Route path={routes.home} element={<Home />}></Route>
       </Routes>
-      {/* 
+
       <div className="container">
         <Routes>
           <Route path={routes.products} element={<Products />}></Route>
@@ -36,7 +36,7 @@ const App = () => {
         </Routes>
       </div>
 
-      <Footer isLoading={isLoading} /> */}
+      <Footer isLoading={isLoading} />
     </>
   );
 };
