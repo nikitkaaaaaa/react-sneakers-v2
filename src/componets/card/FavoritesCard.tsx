@@ -53,9 +53,9 @@ const FavoritesCard = ({
         <div className="border border-black rounded-lg   w-fit  py-1  px-2 flex items-center">
           <div className="bg-black text-white rounded-l-lg flex items-center pr-1">
             <img src={pacman} alt="pacman" />
-            <div className="text-[10px] md:text-xs ml-1">{price / 2} ₽</div>
+            <div className="text-[10px] xs:text-xs ml-1">{price / 2} ₽</div>
           </div>
-          <div className="text-[10px] md:text-xs ml-2">x 2 в Сплит</div>
+          <div className="text-[10px] xs:text-xs ml-2">x 2 в Сплит</div>
         </div>
       </Link>
     </div>

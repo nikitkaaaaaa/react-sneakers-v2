@@ -28,59 +28,55 @@ const LeftSIdeOrderForm = ({ register, errors }: LeftSIdeOrderFormProps) => {
     <div className={style.leftSideOrderForm}>
       <div
         className={`py-[30px] px-[27px] h-full rounded ${
-          hasAnyError && "border border-red-600"
+          hasAnyError ? "border border-red-600" : "border border-white"
         }`}
       >
         <div className="text-xl">Покупатель</div>
-        <div className="bordder flex justify-between items-center mt-4 w-full">
+        <div className="bordder flex flex-col md:flex-row  justify-between items-center mt-4 w-full">
           {/* Поле имя */}
-          <div className="w-full mr-4">
-            <div className="mb-1 text-sm text-gray-500 flex justify-between">
-              <div>
-                Имя <span className="text-red-600 ml-1 "> *</span>
-              </div>
-              {errors.name && (
-                <div className="text-red-600 ">{errors.name.message}</div>
-              )}
+          <div className="w-full mr-0 md:mr-4 ">
+            <div className="text-sm text-gray-500 mb-2">
+              Имя <span className="text-red-600"> *</span>
             </div>
             <input
               type="text"
-              className={`border w-full outline-none h-[48px] p-2 pr-3.25 pb-1.5 rounded ${
+              className={`border w-full outline-none h-[48px] p-2 pr-3.25 pb-1.5 rounded mb-2 ${
                 errors.name && "border border-red-700"
               }`}
               {...register("name", {
                 required: 'Поле "Имя" обязательно для заполнения',
               })}
-            />
+            />{" "}
+            {errors.name && (
+              <div className="text-red-600 text-xs">{errors.name.message}</div>
+            )}
           </div>
           {/* Поле имя */}
 
           {/* Поле Телефон */}
-          <div className="w-full ml-4">
-            <div className="mb-1 text-sm text-gray-500 flex  justify-between">
-              <div>
-                Телефон <span className="text-red-600 ml-1 "> *</span>
-              </div>
-              {errors.phone && (
-                <div className="text-red-600 ">{errors.phone.message}</div>
-              )}
+          <div className="w-full ml-0 md:ml-4 mt-6 md:mt-0">
+            <div className="text-sm text-gray-500 mb-2">
+              Телефон <span className="text-red-600"> *</span>
             </div>
             <input
               type="tel"
-              className={`border w-full outline-none h-[48px] p-2 pr-3.25 pb-1.5 rounded ${
+              className={`border w-full outline-none h-[48px] p-2 pr-3.25 pb-1.5 rounded mb-2 ${
                 errors.phone && "border border-red-700"
               }`}
               {...register("phone", {
                 required: 'Поле "Телефон" обязательно для заполнения',
               })}
             />
+            {errors.phone && (
+              <div className="text-red-600 text-xs">{errors.phone.message}</div>
+            )}
           </div>
           {/* Поле Телефон */}
         </div>
 
-        <div className="flex justify-between items-center mt-6">
+        <div className="flex justify-between items-center mt-6 flex-col-reverse md:flex-row">
           {/* Выбор метода связи */}
-          <div className="w-full ml-4">
+          <div className="w-full ml-0 md:ml-4">
             <div className=" text-gray-500 mt-6 mb-1">
               Как с вами связаться?
             </div>
@@ -103,22 +99,20 @@ const LeftSIdeOrderForm = ({ register, errors }: LeftSIdeOrderFormProps) => {
           {/* Выбор метода связи */}
 
           {/* Поле E-Mail */}
-          <div className="w-full ml-4">
-            <div className="mb-1 text-sm text-gray-500 flex justify-between">
-              <div>E-Mail</div>
-              {errors.email && (
-                <div className="text-red-600 ">{errors.email.message}</div>
-              )}
-            </div>
+          <div className="w-full ml-0 md:ml-4">
+            <div className="text-sm text-gray-500 mb-2">E-Mail</div>
             <input
               type="email"
-              className={`border w-full outline-none h-[48px] p-2 pr-3.25 pb-1.5 rounded ${
+              className={`border w-full outline-none h-[48px] p-2 pr-3.25 pb-1.5 rounded mb-2 ${
                 errors.email && "border border-red-700"
               }`}
               {...register("email", {
                 required: 'Поле "E-Mail" обязательно для заполнения',
               })}
             />
+            {errors.email && (
+              <div className="text-red-600 text-xs">{errors.email.message}</div>
+            )}
           </div>
           {/* Поле E-Mail */}
         </div>

@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from "react";
 
+import style from "./orderForm.module.css";
 import RightSideOrderForm from "./RightSideOrderForm/RightSideOrderForm";
 import LeftSIdeOrderForm from "./LeftSIdeOrderForm/LeftSIdeOrderForm";
 import { useForm } from "react-hook-form";
@@ -81,13 +82,13 @@ const OrderForm = () => {
   return (
     <div>
       <form className=" mt-5" onSubmit={handleSubmit(handleOnSubmit)}>
-        <div className="flex justify-between ">
+        <div className={style.container_order_form}>
           <LeftSIdeOrderForm register={register} errors={errors} />
           <RightSideOrderForm totalPrice={totalPrice} />
         </div>
         <div className="flex justify-between">
           <DeliveryMethod register={register} errors={errors} />
-          <div className="w-[25%]"></div>
+          <div className="w-[0%]  md:w-[25%]"></div>
         </div>
       </form>
     </div>

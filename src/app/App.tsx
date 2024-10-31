@@ -36,7 +36,7 @@ const App = () => {
         </Routes>
       </div>
 
-      <Footer isLoading={isLoading} />
+      {/* <Footer isLoading={isLoading} /> */}
     </>
   );
 };
