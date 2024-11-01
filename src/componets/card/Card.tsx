@@ -58,7 +58,7 @@ const Card = ({ id, title, imageUrL, price }: CardProps) => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative ">
       <img
         src={productInFavorites ? favorites_added : favorites}
         alt="favorites"
@@ -75,7 +75,7 @@ const Card = ({ id, title, imageUrL, price }: CardProps) => {
       >
         <img src={imageUrL[0]} alt={title} />
         <div className={style.title_product}>{title}</div>
-        <div className="my-2 md:my-5 font-bold">{price} ₽</div>
+        <div className="my-2 md:my-4 font-bold">{price} ₽</div>
 
         <div className="border border-black rounded-lg   w-fit  py-1  px-2 flex items-center">
           <div className="bg-black text-white rounded-l-lg flex items-center pr-1">

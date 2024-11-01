@@ -67,7 +67,7 @@ const CartCard = ({
 
   return (
     <div
-      className={`flex justify-between py-[40px] mx-[27px] items-center ${
+      className={`flex flex-col xs:flex-row justify-between py-[20px] xs:py-[40px] mx-[15px] md:mx-[27px] xs:items-center  relative ${
         isLastItem ? "" : "border-b"
       }`}
     >
@@ -78,7 +78,11 @@ const CartCard = ({
             window.scrollTo({ top: 0 });
           }}
         >
-          <img src={imageUrl} alt={title} className="w-[105px] mr-5" />
+          <img
+            src={imageUrl}
+            alt={title}
+            className="w-[90px] md:w-[105px] mr-4"
+          />
         </Link>
         <div>
           <Link
@@ -89,12 +93,13 @@ const CartCard = ({
           >
             <div className={style.title_cart}>{title}</div>
           </Link>
-          <div className="text-gray-500">
+          <div className="text-gray-500 mt-2">
             Размер : <span>{size}</span>
           </div>
         </div>
       </div>
-      <div className="border flex w-[100px] items-center justify-between bg-[#FAFAFA] px-2 py-0.5">
+
+      <div className="border w-[100px] items-center justify-between bg-[#FAFAFA] px-2 py-0.5 hidden xs:flex ">
         <div>
           <img
             src={minus}
@@ -113,11 +118,38 @@ const CartCard = ({
           />
         </div>
       </div>
-      <div className="font-bold">{price} ₽</div>
+
+      <div className="font-bold hidden xs:flex">{price} ₽</div>
+
+      {/* цена и функция добавления,удаления на 1 продукт при маленьком экране */}
+      <div className="justify-between items-center mt-7  flex xs:hidden">
+        <div className="border flex w-[100px] items-center justify-between bg-[#FAFAFA] px-2 py-0.5 ">
+          <div>
+            <img
+              src={minus}
+              alt="minus"
+              className="cursor-pointer"
+              onClick={() => handleAddOrRemoveOneProductToCart("remove")}
+            />
+          </div>
+          <div>{count}</div>
+          <div>
+            <img
+              src={plus}
+              alt="plus"
+              className="cursor-pointer"
+              onClick={() => handleAddOrRemoveOneProductToCart("add")}
+            />
+          </div>
+        </div>
+        <div className="font-bold">{price} ₽</div>
+      </div>
+      {/* цена и функция добавления,удаления на 1 продукт при маленьком экране */}
+
       <img
         src={remove_product}
         alt="remove product"
-        className="cursor-pointer"
+        className="cursor-pointer absolute top-6 right-0 xs:relative xs:top-0 xs:right-0"
         onClick={hanldeRemoveProductInCart}
       />
     </div>

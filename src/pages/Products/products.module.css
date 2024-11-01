@@ -20,3 +20,11 @@
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
 }
+
+@media (max-width: 576px) {
+  .title_product {
+    font-size: 14px;
+    line-height: 20px;
+    -webkit-line-clamp: 2;
+  }
+}

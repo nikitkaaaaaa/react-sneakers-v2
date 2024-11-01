@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import style from "./cart.module.css";
 import empty_cart from "../../assets/icons/empty_cart.svg";
 import { useGetProductsCartQuery } from "../../api/cartApi/cartApi";
 import Loading from "../../componets/loading/Loading";
@@ -15,11 +16,11 @@ const Cart = () => {
 
   return (
     <div>
-      <div className="text-3xl mt-5">Корзина</div>
+      <div className="text-3xl mt-5 mb-20 ">Корзина</div>
       <div>
         {data.length <= 0 ? (
           // страница при пустой корзины
-          <div className=" mt-5 flex justify-center">
+          <div className=" mt-5 flex justify-center ">
             <div className=" text-center">
               <div className="flex justify-center">
                 <img src={empty_cart} alt="empty cart" />
@@ -34,7 +35,7 @@ const Cart = () => {
             </div>
           </div>
         ) : (
-          <div className="flex mt-5">
+          <div className={style.container_left_rigth_side_cart}>
             <LeftSideCart products={data} />
             <RightSideCart products={data} />
           </div>

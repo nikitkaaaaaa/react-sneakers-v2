@@ -13,7 +13,9 @@ const Favorites = () => {
 
   return (
     <div>
-      <div className="text-3xl mt-5 mb-12 md:mb-24">Избранные товары</div>
+      <div className="text-center text-3xl mt-5 mb-12 md:mb-24 xs:text-left">
+        Избранные товары
+      </div>
       {(favoritesProducts?.length ?? 0) > 0 ? (
         <div className={style.content}>
           {favoritesProducts?.map((item) => (
@@ -27,7 +29,7 @@ const Favorites = () => {
               src={empty_favorites_products}
               alt="empty favorites products"
             />
-            <div className="w-[402px] text-xl">
+            <div className="w-[402px] text-lg">
               Тут вы будете видеть товары, которые лайкнули. Сихронизируется со
               всеми устройствами. Это удобно!
             </div>

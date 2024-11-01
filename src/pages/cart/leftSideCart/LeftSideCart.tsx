@@ -27,8 +27,8 @@ const LeftSideCart = ({ products }: LeftSideCartProps) => {
   };
 
   return (
-    <div className={style.leftSideCart}>
-      <div className=" flex justify-between items-center border-b px-[27px] py-[15px]">
+    <div className={style.left_side_cart}>
+      <div className=" flex justify-between items-center border-b  mx-[15px] md:mx-[27px] py-[15px]">
         <div className="border-b-2 border-b-red-800">Товары в корзине</div>
         <div
           className="flex items-center  cursor-pointer"
@@ -36,7 +36,7 @@ const LeftSideCart = ({ products }: LeftSideCartProps) => {
         >
           <div className="text-xs mr-3">ОЧИСТИТЬ</div>
           <div>
-            <img src={remove_product} alt="remove product" />
+            <img src={remove_product} alt="remove product" className="w-2.5" />
           </div>
         </div>
       </div>
