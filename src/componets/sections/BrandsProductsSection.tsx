@@ -13,7 +13,7 @@ const BrandsProductsSection = ({
   brandImg,
 }: BrandsProductsSectionProps) => {
   return (
-    <div className="border p-[30px] mt-20 rounded-sm">
+    <div className="border p-[30px] mt-20 rounded-sm  hidden lg:block">
       <Link
         to={brand ? routes.productBrands.replace(":brand", brand) : "#"}
         onClick={() => window.scrollTo({ top: 0 })}

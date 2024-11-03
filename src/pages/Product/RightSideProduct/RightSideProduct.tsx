@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import { size, socials } from "../arrs/arrs";
+import style from "../product.module.css";
+import { infoProduct, size, socials } from "../arrs/arrs";
 import asics from "../../../assets/png/asics";
 import nike from "../../../assets/png/nike";
 import adidas from "../../../assets/png/adidas";
@@ -16,15 +17,9 @@ import {
 import InerfaceCart from "../../../api/cartApi/InerfaceCart";
 import { routes } from "../../../routes/routes";
 import BuyProduct from "../../../componets/sections/BuyProduct";
-
-interface RightSideProps {
-  price: number | undefined;
-  brand: string | undefined;
-  title: string | undefined;
-  imageUrl: string | undefined;
-  parentId: string | undefined;
-  id: string | undefined;
-}
+import Card from "../../../componets/card/Card";
+import { useGetProductsQuery } from "../../../api/productsApi/productsApi";
+import InterfaceRigthSideProduct from "./InterfaceRigthSideProduct";
 
 const RightSideProduct = ({
   price,
@@ -33,10 +28,15 @@ const RightSideProduct = ({
   imageUrl,
   parentId,
   id,
-}: RightSideProps) => {
+  currentInfoProduct,
+  setCurrentInfoProduct,
+  infoProduct,
+}: InterfaceRigthSideProduct) => {
   const navigate = useNavigate();
 
   const [currentSize, setcurrnetSize] = useState<number>(0);
+
+  const [selectedTabIndex, setSelectedTabIndex] = useState<number>(0);
 
   const [currentBrandImg, setCurrentBrandImg] = useState<string>("");
 
@@ -44,11 +44,15 @@ const RightSideProduct = ({
 
   const { data = [] } = useGetProductsCartQuery();
 
+  const { data: products } = useGetProductsQuery({});
+
   const [addProductToCart] = useAddProductToCartMutation<InerfaceCart>();
 
   const productInCart = data.find(
     (item) => item.parentId === id && item.size === size[currentSize]
   );
+
+  const [visibleCount, setVisibleCount] = useState(10); // Начальное значение рекомендуемых продуктов
 
   const handleAddProductToCart = async () => {
     try {
@@ -68,6 +72,17 @@ const RightSideProduct = ({
     }
   };
 
+  const handleResize = () => {
+    //функция для опредкления кол-во рекомендованных продуктов
+    if (window.innerWidth > 1024) {
+      setVisibleCount(7);
+    } else if (window.innerWidth < 576) {
+      setVisibleCount(7);
+    } else {
+      setVisibleCount(6);
+    }
+  };
+
   useEffect(() => {
     if (brand === "Asics") {
       setCurrentBrandImg(asics.asics);
@@ -80,9 +95,20 @@ const RightSideProduct = ({
     }
   }, [brand]);
 
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <div className="mt-10  sticky top-3">
-      <div className="text-2xl font-bold opacity-65">от {price} ₽</div>
+      <div className="text-2xl font-bold opacity-65 text-center lg:text-left">
+        от {price} ₽
+      </div>
 
       {/* Размеры продукта */}
       <div
@@ -102,7 +128,9 @@ const RightSideProduct = ({
             onClick={() => setcurrnetSize(index)}
           >
             <div className="font-bold py-1">{item} EU</div>
-            <div>{index % 2 == 0 ? price : price && price * 1.05} ₽</div>
+            <div className="text-xs">
+              {index % 2 == 0 ? price : price && price * 1.05} ₽
+            </div>
           </div>
         ))}
       </div>
@@ -112,9 +140,14 @@ const RightSideProduct = ({
       <>
         <button
           className=" border w-full text-center bg-white  border-black mt-5 rounded py-3 px-5 text-xs"
-          onClick={
-            productInCart ? () => navigate(routes.cart) : handleAddProductToCart
-          }
+          onClick={() => {
+            if (productInCart) {
+              navigate(routes.cart);
+              window.scrollTo({ top: 0 });
+            } else {
+              handleAddProductToCart();
+            }
+          }}
         >
           {productInCart ? "В КОРЗИНЕ" : "В КОРЗИНУ"}
         </button>
@@ -127,14 +160,14 @@ const RightSideProduct = ({
       </>
       {/* Покупка продукта */}
 
-      <div className="text-center  text-sm my-7">
+      <div className="text-center  text-sm my-7 hidden lg:block">
         Мы будем рады ответить на все вопросы в любом удобном мессенджере:
       </div>
 
       {/* Соц сети  */}
       {socials.map((item, index) => (
         <Link to={item.route} target="_blank" key={index}>
-          <button className="border border-black w-full mt-3 py-2.5 rounded flex items-center justify-center relative">
+          <button className="border border-black w-full mt-3 py-2.5 rounded flex items-center justify-center relative hidden lg:block">
             <div>{item.title}</div>
             <img
               src={item.img}
@@ -160,6 +193,38 @@ const RightSideProduct = ({
         closeСonsultation={() => setShowСonsultation(false)}
       />
       {/* Форма консультации */}
+
+      {/* Информация о продукте (маленький экран) */}
+      <div className="mt-5  block lg:hidden">
+        {infoProduct.map((item, index) => (
+          <div key={index} className="inline-block mb-2 ">
+            <div
+              className={`mr-3 pt-[9px] pr-[24px] pb-[10px] pl-[24px] rounded border text-sm cursor-pointer ${
+                index === selectedTabIndex && "border-b-2 border-b-red-500"
+              }`}
+              onClick={() => {
+                setSelectedTabIndex(index);
+                setCurrentInfoProduct(item.value);
+              }}
+            >
+              {item.title}
+            </div>
+          </div>
+        ))}
+        <div className="mt-4">{currentInfoProduct}</div>
+      </div>
+      {/* Информация о продукте  (маленький экран)*/}
+
+      {/* Рекомендованные продукты (маленький экран) */}
+      <div className="block lg:hidden">
+        <div className="text-2xl mt-10">Рекомендуем</div>
+        <div className={style.recommendation}>
+          {products?.slice(3, visibleCount).map((item) => (
+            <Card key={item.id} {...item} />
+          ))}
+        </div>
+      </div>
+      {/* Рекомендованные продукты (маленький экран)*/}
     </div>
   );
 };

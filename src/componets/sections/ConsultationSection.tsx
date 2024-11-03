@@ -11,8 +11,8 @@ const ConsultationSection = ({
 }: ConsultationSectionProps) => {
   return (
     <div
-      className="border group  rounded-sm mt-8 flex flex-col justify-center items-center text-center hover:bg-white hover:transform hover:-translate-y-0.5
-                   hover:shadow-lg transition-transform duration-300 pt-[40px]"
+      className="border group  rounded-sm mt-8  flex-col justify-center items-center text-center hover:bg-white hover:transform hover:-translate-y-0.5
+                   hover:shadow-lg transition-transform duration-300 pt-[40px] hidden lg:flex"
     >
       <img src={consultation} alt="consultation" />
       <div className="my-4 px-[15px]">Нужна консультация?</div>

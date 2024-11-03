@@ -1,20 +1,47 @@
 .left_side {
   width: 80%;
-  /* border: 1px solid red; */
+  border: 1px solid red;
 
   margin-right: 40px;
 }
 
 .right_side {
-  width: 20%;
-  /* 
-  border: 1px solid blue; */
+  width: 335px;
+
+  border: 1px solid blue;
 }
 
 .recommendation {
   display: grid;
   margin-top: 94px;
-
   grid-template-columns: repeat(4, 1fr);
   gap: 80px 20px;
+}
+
+/* .test {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+  border: 1px solid;
+} */
+
+@media (max-width: 1024px) {
+  .recommendation {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .left_side,
+  .right_side {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .recommendation {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
 }

@@ -1,4 +1,4 @@
-export default interface LeftSideInterface {
+export default interface InterfaceLeftSideProduct {
   title: string | undefined;
   id: string | undefined;
   price: number | undefined;

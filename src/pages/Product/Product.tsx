@@ -36,7 +36,7 @@ const Product = () => {
 
   return (
     <>
-      <div className="text-gray-500 mt-8 mb-4">
+      <div className="text-gray-500 mt-8 ">
         <span>
           <Link to={routes.home}>Главная</Link>
         </span>
@@ -51,7 +51,8 @@ const Product = () => {
         <span className="mx-2">—</span> <span>{data?.title}</span>
       </div>
 
-      <div className="flex">
+      <div className="text-2xl mt-4 mb-2">{data?.title}</div>
+      <div className="flex flex-col lg:flex-row">
         <div className={style.left_side}>
           <LeftSideProduct
             title={data?.title}
@@ -74,6 +75,9 @@ const Product = () => {
             imageUrl={data?.imageUrL[0]}
             parentId={id}
             id={id}
+            currentInfoProduct={currentInfoProduct}
+            setCurrentInfoProduct={setCurrentInfoProduct}
+            infoProduct={infoProduct(data || {})}
           />
         </div>
       </div>

@@ -4,7 +4,7 @@ import style from "../product.module.css";
 import favorites from "../../../assets/icons/favorites.svg";
 import favorites_added from "../../../assets/icons/favorites_added.svg";
 import arrow from "../../../assets/icons/arrow.svg";
-import LeftSideInterface from "./LeftSideInterface";
+import InterfaceLeftSideProduct from "./InterfaceLeftSideProduct";
 import {
   useGetProductIdQuery,
   useGetProductsQuery,
@@ -16,6 +16,7 @@ import {
   useRemoveProductInFavoritesMutation,
 } from "../../../api/favoritesProductsApi/favoritesProductsApi";
 import Card from "../../../componets/card/Card";
+import Slider from "react-slick";
 
 const LeftSideProduct = ({
   id,
@@ -27,7 +28,7 @@ const LeftSideProduct = ({
   setCurrentInfoProduct,
   setCurrentImage,
   infoProduct,
-}: LeftSideInterface) => {
+}: InterfaceLeftSideProduct) => {
   const [selectedTabIndex, setSelectedTabIndex] = useState<number>(0);
 
   const { data, isLoading } = useGetProductIdQuery(1);
@@ -35,6 +36,16 @@ const LeftSideProduct = ({
   const { data: favoritesProducts } = useGetFavoritesProductsQuery();
 
   const { data: products } = useGetProductsQuery({});
+
+  const [visibleCount, setVisibleCount] = useState(10); // Начальное значение рекомендуемых продуктов
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
 
   const productInFavorites = favoritesProducts?.find(
     (obj) => obj.parentId === String(id)
@@ -88,14 +99,31 @@ const LeftSideProduct = ({
     }
   };
 
+  const handleResize = () => {
+    //функция для опредкления кол-во рекомендованных продуктов
+    if (window.innerWidth > 1024) {
+      setVisibleCount(7);
+    } else {
+      setVisibleCount(6);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   if (isLoading) return <Loading />;
 
   return (
     <div>
-      <div className="text-3xl">{title}</div>
       <div className="relative">
         {/* Блок для текущей выбранной картинки */}
-        <div className="bordser border-green-500  group">
+        <div className="bordser border-green-500  group hidden lg:block">
           <div className="max-w-[1350px] max-h-[810px] relative ">
             <img
               src={currentImage}
@@ -139,7 +167,7 @@ const LeftSideProduct = ({
         {/* Блок для текущей выбранной картинки */}
 
         {/* Галерея с маленькими изображениями */}
-        <div className="flex justify-center absolute bottom-0 left-1/2 transform -translate-x-1/2 z-10 ">
+        <div className=" justify-center absolute bottom-0 left-1/2 transform -translate-x-1/2 z-10  hidden lg:flex">
           {imageUrl?.map((item, index) => (
             <div
               className="w-[80px] mr-2 transition-all duration-300"
@@ -159,10 +187,31 @@ const LeftSideProduct = ({
         {/* Галерея с маленькими изображениями */}
       </div>
 
+      {/* Картинка продукта при маленьком экране */}
+      <div className="block lg:hidden">
+        <link
+          rel="stylesheet"
+          type="text/css"
+          charSet="UTF-8"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+        />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+        />
+        <Slider {...settings}>
+          {imageUrl?.map((item, index) => (
+            <img key={index} src={item} />
+          ))}
+        </Slider>
+      </div>
+      {/* Картинка продукта при маленьком экране */}
+
       {/* Информация о продукте */}
-      <div className="mt-3.5 h-[450px]">
+      <div className="mt-5 hidden lg:block">
         {infoProduct.map((item, index) => (
-          <div key={index} className="inline-block mb-2">
+          <div key={index} className="inline-block mb-2 border border-white">
             <div
               className={`mr-3 pt-[9px] pr-[24px] pb-[10px] pl-[24px] rounded border text-sm cursor-pointer ${
                 index === selectedTabIndex && "border-b-2 border-b-red-500"
@@ -181,10 +230,10 @@ const LeftSideProduct = ({
       {/* Информация о продукте */}
 
       {/* Рекомендованные продукты */}
-      <div>
+      <div className="hidden lg:block">
         <div className="text-2xl mt-10">Рекомендуем</div>
         <div className={style.recommendation}>
-          {products?.slice(3, 7).map((item) => (
+          {products?.slice(3, visibleCount).map((item) => (
             <Card key={item.id} {...item} />
           ))}
         </div>
