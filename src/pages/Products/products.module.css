@@ -1,8 +1,10 @@
-.left_side {
+.left_side_products {
   width: 20%;
   margin-right: 80px;
+  display: flex;
 }
-.right_side {
+
+.right_side_products {
   width: 80%;
 }
 
@@ -21,10 +23,25 @@
   -webkit-box-orient: vertical;
 }
 
+@media (max-width: 992px) {
+  .right_side_products,
+  .left_side_products {
+    width: 100%;
+  }
+
+  .content {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media (max-width: 576px) {
   .title_product {
     font-size: 14px;
     line-height: 20px;
     -webkit-line-clamp: 2;
+  }
+
+  .content {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

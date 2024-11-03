@@ -59,7 +59,7 @@ const LeftSideProducts = ({
   };
 
   return (
-    <div>
+    <div className="w-full">
       {/* Каталог */}
 
       <div

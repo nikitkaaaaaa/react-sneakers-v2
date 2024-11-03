@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import style from "../../pages/Products/products.module.css";
 import LeftSideProducts from "./LeftSideProducts/LeftSideProducts";
@@ -7,8 +8,6 @@ import { useGetProductsQuery } from "../../api/productsApi/productsApi";
 import RightSide from "./RightSideProducts/RightSideProducts";
 import ChoiseProducts from "../../componets/choiseProducts/ChoiseProducts";
 import Loading from "../../componets/loading/Loading";
-
-import { useParams } from "react-router-dom";
 import { routes } from "../../routes/routes";
 
 const Products = () => {
@@ -65,8 +64,8 @@ const Products = () => {
       </div>
       {/* В зависимости от routes разный блок */}
 
-      <div className="flex">
-        <div className={style.left_side}>
+      <div className="flex flex-col lg:flex-row">
+        <div className={style.left_side_products}>
           <LeftSideProducts
             selectedBrands={selectedBrands}
             setSelectedBrands={setSelectedBrands}
@@ -82,8 +81,8 @@ const Products = () => {
             isBrandPage={brand}
           />
         </div>
-        <div className={style.right_side}>
-          <div>
+        <div className={style.right_side_products}>
+          <div className="">
             <ChoiseProducts
               onChoise={(value) => setChoise(value)}
               choise={choise}
