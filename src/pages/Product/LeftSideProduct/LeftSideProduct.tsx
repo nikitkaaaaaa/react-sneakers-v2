@@ -40,7 +40,7 @@ const LeftSideProduct = ({
   const [visibleCount, setVisibleCount] = useState(10); // Начальное значение рекомендуемых продуктов
 
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
@@ -123,7 +123,7 @@ const LeftSideProduct = ({
     <div>
       <div className="relative">
         {/* Блок для текущей выбранной картинки */}
-        <div className="bordser border-green-500  group hidden lg:block">
+        <div className=" group hidden lg:block">
           <div className="max-w-[1350px] max-h-[810px] relative ">
             <img
               src={currentImage}
@@ -209,22 +209,24 @@ const LeftSideProduct = ({
       {/* Картинка продукта при маленьком экране */}
 
       {/* Информация о продукте */}
-      <div className="mt-5 hidden lg:block">
-        {infoProduct.map((item, index) => (
-          <div key={index} className="inline-block mb-2 border border-white">
-            <div
-              className={`mr-3 pt-[9px] pr-[24px] pb-[10px] pl-[24px] rounded border text-sm cursor-pointer ${
-                index === selectedTabIndex && "border-b-2 border-b-red-500"
-              }`}
-              onClick={() => {
-                setSelectedTabIndex(index);
-                setCurrentInfoProduct(item.value);
-              }}
-            >
-              {item.title}
+      <div className="hidden lg:block">
+        <div className={style.info_product}>
+          {infoProduct.map((item, index) => (
+            <div key={index} className="inline-block mb-2 border border-white">
+              <div
+                className={`mr-3 pt-[9px] pr-[24px] pb-[10px] pl-[24px] rounded border text-sm cursor-pointer ${
+                  index === selectedTabIndex && "border-b-2 border-b-red-500"
+                }`}
+                onClick={() => {
+                  setSelectedTabIndex(index);
+                  setCurrentInfoProduct(item.value);
+                }}
+              >
+                {item.title}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
         <div className="mt-4">{currentInfoProduct}</div>
       </div>
       {/* Информация о продукте */}

@@ -67,7 +67,7 @@ const Product = () => {
           />
         </div>
 
-        <div className={style.right_side}>
+        <div>
           <RightSideProduct
             price={data?.price}
             brand={data?.brand}

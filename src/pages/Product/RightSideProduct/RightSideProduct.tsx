@@ -105,7 +105,7 @@ const RightSideProduct = ({
   }, []);
 
   return (
-    <div className="mt-10  sticky top-3">
+    <div className={style.right_side}>
       <div className="text-2xl font-bold opacity-65 text-center lg:text-left">
         от {price} ₽
       </div>
@@ -195,22 +195,24 @@ const RightSideProduct = ({
       {/* Форма консультации */}
 
       {/* Информация о продукте (маленький экран) */}
-      <div className="mt-5  block lg:hidden">
-        {infoProduct.map((item, index) => (
-          <div key={index} className="inline-block mb-2 ">
-            <div
-              className={`mr-3 pt-[9px] pr-[24px] pb-[10px] pl-[24px] rounded border text-sm cursor-pointer ${
-                index === selectedTabIndex && "border-b-2 border-b-red-500"
-              }`}
-              onClick={() => {
-                setSelectedTabIndex(index);
-                setCurrentInfoProduct(item.value);
-              }}
-            >
-              {item.title}
+      <div className="block lg:hidden">
+        <div className={style.info_product_small_screen}>
+          {infoProduct.map((item, index) => (
+            <div key={index} className="inline-block mb-2 ">
+              <div
+                className={`mr-3 pt-[9px] pr-[24px] pb-[10px] pl-[24px] rounded border text-sm cursor-pointer ${
+                  index === selectedTabIndex && "border-b-2 border-b-red-500"
+                }`}
+                onClick={() => {
+                  setSelectedTabIndex(index);
+                  setCurrentInfoProduct(item.value);
+                }}
+              >
+                {item.title}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
         <div className="mt-4">{currentInfoProduct}</div>
       </div>
       {/* Информация о продукте  (маленький экран)*/}

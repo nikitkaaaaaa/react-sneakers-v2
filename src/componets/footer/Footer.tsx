@@ -42,7 +42,7 @@ const Footer = ({ isLoading }: FooterProps) => {
         <>
           <hr className="my-16" />
           <div className="container">
-            <div className="border hidden md:block">
+            <div className=" hidden md:block">
               <div className="flex justify-between">
                 <div>
                   {mainMenuItems.map((item, index) => (
