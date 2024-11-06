@@ -23,7 +23,9 @@ const RightSideProducts = ({ products }: RightSideProps) => {
           <div>
             <img src={empty_products} alt="empty_products" />
           </div>
-          <div className="text-2xl mt-6">К сожалению, товаров не найденно</div>
+          <div className="text-2xl mt-6 text-center">
+            К сожалению, товаров не найденно
+          </div>
         </div>
       )}
     </div>

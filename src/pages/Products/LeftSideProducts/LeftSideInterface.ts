@@ -9,6 +9,6 @@ export default interface LeftSideInterface {
   setPriceFrom: (price: string) => void;
   priceTo: string;
   setPriceTo: (price: string) => void;
-  onChoiseCategory: (value: string) => void;
   isBrandPage: string | undefined;
+  brand: string | undefined;
 }

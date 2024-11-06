@@ -6,6 +6,8 @@ import catalog from "../../../assets/icons/catalog.svg";
 import filters from "../../../assets/icons/filters.svg";
 import LeftSideInterface from "./LeftSideInterface";
 import NewsLetterSection from "../../../componets/sections/NewsLetterSection";
+import { Link } from "react-router-dom";
+import { routes } from "../../../routes/routes";
 
 const LeftSideProducts = ({
   selectedBrands,
@@ -18,8 +20,8 @@ const LeftSideProducts = ({
   setPriceFrom,
   priceTo,
   setPriceTo,
-  onChoiseCategory,
   isBrandPage,
+  brand,
 }: LeftSideInterface) => {
   const categoryShoes: string[] = ["Кроссовки", "Кеды", "Ботинки"];
   const brands: string[] = ["Nike", "Adidas", "Asics", "Jordan"];
@@ -89,9 +91,17 @@ const LeftSideProducts = ({
             key={index}
             className="border-b border-l border-r hover:bg-white cursor-pointer"
           >
-            <div className="ml-5 py-2" onClick={() => onChoiseCategory(item)}>
-              {item}
-            </div>
+            <Link
+              to={
+                isBrandPage
+                  ? routes.productBrands
+                      .replace(":category", item)
+                      .replace(":brand", brand ? brand : "")
+                  : routes.products.replace(":category", item) // если страница продуктов (всех брендов, то routes пернаправляет на все категории продуктов), если нет,то направляет на разыне категории конкретного бренда
+              }
+            >
+              <div className="ml-5 py-2">{item}</div>
+            </Link>
           </div>
         ))}
       </div>

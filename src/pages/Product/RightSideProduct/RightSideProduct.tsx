@@ -31,6 +31,7 @@ const RightSideProduct = ({
   currentInfoProduct,
   setCurrentInfoProduct,
   infoProduct,
+  category,
 }: InterfaceRigthSideProduct) => {
   const navigate = useNavigate();
 
@@ -128,7 +129,7 @@ const RightSideProduct = ({
             onClick={() => setcurrnetSize(index)}
           >
             <div className="font-bold py-1">{item} EU</div>
-            <div className="text-xs">
+            <div className="text-sm">
               {index % 2 == 0 ? price : price && price * 1.05} ₽
             </div>
           </div>
@@ -180,7 +181,11 @@ const RightSideProduct = ({
       {/* Соц сети  */}
 
       {/* Перейти к продуктам конкретного бренда */}
-      <BrandsProductsSection brand={brand} brandImg={currentBrandImg} />
+      <BrandsProductsSection
+        brand={brand}
+        brandImg={currentBrandImg}
+        category={category}
+      />
       {/* Перейти к продуктам конкретного бренда */}
 
       {/* консультанция */}

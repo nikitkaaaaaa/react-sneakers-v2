@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Route, Routes } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 
 import "../app/global.css";
 import Header from "../componets/header/Header";
@@ -16,14 +16,32 @@ import { useGetProductsQuery } from "../api/productsApi/productsApi";
 
 const App = () => {
   const { isLoading } = useGetProductsQuery({});
+
+  const routesCategoryProducts: { category: string }[] = [
+    { category: "Кроссовки" },
+    { category: "Кеды" },
+    { category: "Ботинки" },
+  ];
+
   return (
     <>
       <Header />
-
+      <div className="container flex justify-center">
+        <div className="my-5 inline-flex gap-12 font-bosld  ">
+          {routesCategoryProducts.map((item, index) => (
+            <Link
+              key={index}
+              to={routes.products.replace(":category", item.category)}
+              className="uppercase  text-sm"
+            >
+              {item.category}
+            </Link>
+          ))}
+        </div>
+      </div>
       <Routes>
         <Route path={routes.home} element={<Home />}></Route>
       </Routes>
-
       <div className="container">
         <Routes>
           <Route path={routes.products} element={<Products />}></Route>
@@ -35,7 +53,6 @@ const App = () => {
           <Route path={routes.favorites} element={<Favorites />}></Route>
         </Routes>
       </div>
-
       <Footer isLoading={isLoading} />
     </>
   );

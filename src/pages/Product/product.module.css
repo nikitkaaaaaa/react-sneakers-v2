@@ -19,14 +19,6 @@
   gap: 80px 20px;
 }
 
-.info_product {
-  display: flex;
-  margin-top: 20px;
-  overflow-x: auto;
-  white-space: nowrap;
-  scrollbar-width: none;
-}
-
 .info_product_small_screen {
   display: none;
   margin-top: 40px;
@@ -45,10 +37,6 @@
   .left_side,
   .right_side {
     width: 100%;
-  }
-
-  .info_product {
-    display: none;
   }
 
   .info_product_small_screen {

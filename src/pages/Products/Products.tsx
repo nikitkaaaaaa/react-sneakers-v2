@@ -11,9 +11,8 @@ import Loading from "../../componets/loading/Loading";
 import { routes } from "../../routes/routes";
 
 const Products = () => {
-  const { brand } = useParams<{ brand: string }>();
+  const { brand, category } = useParams<{ brand: string; category: string }>();
 
-  const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [selectedGender, setSelectedGender] = useState<string[]>([]);
   const [selectedSeason, setSelectedSeason] = useState<string[]>([]);
@@ -23,7 +22,7 @@ const Products = () => {
   const [choise, setChoise] = useState<string>("-price");
 
   const { data = [], isLoading } = useGetProductsQuery({
-    category: selectedCategory,
+    category: category,
     brands: brand ? [brand] : selectedBrands,
     gender: selectedGender.length > 0 ? selectedGender : undefined,
     seasons: selectedSeason,
@@ -45,6 +44,10 @@ const Products = () => {
                 <Link to={routes.home}>Главная</Link>
               </span>
               <span className="mx-2">—</span> Производители
+              <span className="mx-2">—</span>{" "}
+              <Link to={routes.products.replace(":category", category || "")}>
+                {category}
+              </Link>
               <span className="mx-2">—</span> <span>{brand}</span>
             </div>
             <div>
@@ -57,7 +60,8 @@ const Products = () => {
               <span>
                 <Link to={routes.home}>Главная</Link>
               </span>
-              <span className="mx-2">—</span> Кросовки
+              <span className="mx-2">—</span> Каталог
+              <span className="mx-2">—</span> <span>{category}</span>
             </div>
           </>
         )}
@@ -77,8 +81,8 @@ const Products = () => {
             setPriceFrom={setPpriceFrom}
             priceTo={priceTo}
             setPriceTo={setPriceTo}
-            onChoiseCategory={(value) => setSelectedCategory(value)}
             isBrandPage={brand}
+            brand={brand}
           />
         </div>
         <div className={style.right_side_products}>

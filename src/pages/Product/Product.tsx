@@ -41,10 +41,17 @@ const Product = () => {
           <Link to={routes.home}>Главная</Link>
         </span>
         <span className="mx-2">—</span> Каталог
-        <span className="mx-2">—</span> <span>{data?.category}</span>
         <span className="mx-2">—</span>{" "}
         <Link
-          to={routes.productBrands.replace(":brand", data ? data?.brand : "")}
+          to={routes.products.replace(":category", data ? data?.category : "")}
+        >
+          {data?.category}
+        </Link>
+        <span className="mx-2">—</span>{" "}
+        <Link
+          to={routes.productBrands
+            .replace(":brand", data ? data?.brand : "")
+            .replace(":category", data ? data?.category : "")}
         >
           {data?.brand}
         </Link>
@@ -72,6 +79,7 @@ const Product = () => {
             price={data?.price}
             brand={data?.brand}
             title={data?.title}
+            category={data?.category}
             imageUrl={data?.imageUrL[0]}
             parentId={id}
             id={id}

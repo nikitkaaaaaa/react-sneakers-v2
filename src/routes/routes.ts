@@ -1,8 +1,8 @@
 export const routes = {
   home: "/",
-  products: "/products",
+  products: "/products/:category",
   product: "/product/:id",
-  productBrands: "/products/:brand",
+  productBrands: "/products/:category/:brand",
   cart: "/cart",
   order: "/order",
   favorites: "/favorites",

@@ -9,18 +9,20 @@ import jordan from "../../../assets/png/jordan";
 import { routes } from "../../../routes/routes";
 
 const Brands = () => {
-  const brands: { routes: string; imageUrl: string }[] = [
-    { routes: "Nike", imageUrl: nike.nike },
-    { routes: "Adidas", imageUrl: adidas.adidas },
-    { routes: "Asics", imageUrl: asics.asics },
-    { routes: "Jordan", imageUrl: jordan.jordan },
+  const brands: { brand: string; imageUrl: string; category: string }[] = [
+    { brand: "Nike", imageUrl: nike.nike, category: "Кроссовки" },
+    { brand: "Adidas", imageUrl: adidas.adidas, category: "Кроссовки" },
+    { brand: "Asics", imageUrl: asics.asics, category: "Кроссовки" },
+    { brand: "Jordan", imageUrl: jordan.jordan, category: "Кроссовки" },
   ];
 
   return (
     <div className={style.icon_brands}>
       {brands.map((item, index) => (
         <Link
-          to={routes.productBrands.replace(":brand", item.routes)}
+          to={routes.productBrands
+            .replace(":brand", item.brand)
+            .replace(":category", item.category)}
           key={index}
           className=" flex justify-center"
           onClick={() => {
@@ -29,7 +31,7 @@ const Brands = () => {
         >
           <img
             src={item.imageUrl}
-            className={`${item.routes === "Asics" && "h-[25px]"}`}
+            className={`${item.brand === "Asics" && "h-[25px]"}`}
           />
         </Link>
       ))}

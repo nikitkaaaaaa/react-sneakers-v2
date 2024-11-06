@@ -2,6 +2,7 @@ export default interface InterfaceRigthSideProduct {
   price: number | undefined;
   brand: string | undefined;
   title: string | undefined;
+  category: string | undefined;
   imageUrl: string | undefined;
   parentId: string | undefined;
   id: string | undefined;

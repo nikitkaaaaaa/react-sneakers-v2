@@ -209,24 +209,23 @@ const LeftSideProduct = ({
       {/* Картинка продукта при маленьком экране */}
 
       {/* Информация о продукте */}
-      <div className="hidden lg:block">
-        <div className={style.info_product}>
-          {infoProduct.map((item, index) => (
-            <div key={index} className="inline-block mb-2 border border-white">
-              <div
-                className={`mr-3 pt-[9px] pr-[24px] pb-[10px] pl-[24px] rounded border text-sm cursor-pointer ${
-                  index === selectedTabIndex && "border-b-2 border-b-red-500"
-                }`}
-                onClick={() => {
-                  setSelectedTabIndex(index);
-                  setCurrentInfoProduct(item.value);
-                }}
-              >
-                {item.title}
-              </div>
+      <div className="hidden lg:block mt-8">
+        {infoProduct.map((item, index) => (
+          <div key={index} className="inline-block mb-2 border border-white">
+            <div
+              className={`mr-3 py-[10px]  px-[10px]  rounded border text-sm cursor-pointer ${
+                index === selectedTabIndex && "border-b-2 border-b-red-500"
+              }`}
+              onClick={() => {
+                setSelectedTabIndex(index);
+                setCurrentInfoProduct(item.value);
+              }}
+            >
+              {item.title}
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
+
         <div className="mt-4">{currentInfoProduct}</div>
       </div>
       {/* Информация о продукте */}
