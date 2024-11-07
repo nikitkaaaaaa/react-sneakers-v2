@@ -20,7 +20,8 @@ const App = () => {
   const routesCategoryProducts: { category: string }[] = [
     { category: "Кроссовки" },
     { category: "Кеды" },
-    { category: "Ботинки" },
+    { category: "Для футбола" },
+    { category: "Для баскетбола" },
   ];
 
   return (

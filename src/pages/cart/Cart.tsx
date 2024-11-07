@@ -16,7 +16,7 @@ const Cart = () => {
 
   return (
     <div>
-      <div className="text-3xl mt-5 mb-20 ">Корзина</div>
+      <div className="text-3xl mt-5 mb-12 ">Корзина</div>
       <div>
         {data.length <= 0 ? (
           // страница при пустой корзины

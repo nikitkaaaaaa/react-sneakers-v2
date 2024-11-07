@@ -83,6 +83,7 @@ const Products = () => {
             setPriceTo={setPriceTo}
             isBrandPage={brand}
             brand={brand}
+            category={category}
           />
         </div>
         <div className={style.right_side_products}>

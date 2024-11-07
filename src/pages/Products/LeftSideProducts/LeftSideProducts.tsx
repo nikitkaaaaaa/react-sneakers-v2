@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import arrow from "../../../assets/icons/arrow.svg";
 import arrow_filters from "../../../assets/icons/arrow_filters.svg";
@@ -22,9 +22,22 @@ const LeftSideProducts = ({
   setPriceTo,
   isBrandPage,
   brand,
+  category,
 }: LeftSideInterface) => {
-  const categoryShoes: string[] = ["Кроссовки", "Кеды", "Ботинки"];
-  const brands: string[] = ["Nike", "Adidas", "Asics", "Jordan"];
+  const categoryShoes: string[] = [
+    "Кроссовки",
+    "Кеды",
+    "Для футбола",
+    "Для баскетбола",
+  ];
+
+  const [brands, setBrabds] = useState<string[]>([
+    "Nike",
+    "Adidas",
+    "Asics",
+    "Jordan",
+  ]);
+
   const genders: string[] = ["Мужской", "Женский"];
   const seasons: string[] = ["Лето", "Осень", "Зима", "Весна"];
 
@@ -60,6 +73,16 @@ const LeftSideProducts = ({
     }
   };
 
+  useEffect(() => {
+    if (category === "Для футбола") {
+      setBrabds(["Nike", "Adidas"]);
+    } else if (category === "Для баскетбола") {
+      setBrabds(["Nike", "Jordan", "Adidas"]);
+    } else {
+      setBrabds(["Nike", "Adidas", "Asics", "Jordan"]);
+    }
+  }, [category]); // проверка категории для порверки кол-во возможных брендов данной категории
+
   return (
     <div className="w-full">
       {/* Каталог */}
@@ -92,6 +115,7 @@ const LeftSideProducts = ({
             className="border-b border-l border-r hover:bg-white cursor-pointer"
           >
             <Link
+              onClick={() => setOpenCatalog(false)}
               to={
                 isBrandPage
                   ? routes.productBrands
@@ -262,44 +286,46 @@ const LeftSideProducts = ({
           {/* Фильтр по полу */}
 
           {/* Фильтр по сезону */}
-          <div className="hover:bg-white">
-            <div className="border-l border-r border-b cursor-pointer">
-              <div
-                className="flex justify-between items-center py-2"
-                onClick={() => setShowSeason(!showSeason)}
-              >
-                <div className="ml-3">Сезон</div>
-                <img
-                  src={arrow_filters}
-                  alt="arrow_filters"
-                  className={`transition-transform duration-400 mr-3 ${
-                    !showSeason ? "rotate-0" : "rotate-180"
-                  }`}
-                />
+          {category !== "Для футбола" && category !== "Для баскетбола" && (
+            <div className="hover:bg-white">
+              <div className="border-l border-r border-b cursor-pointer">
+                <div
+                  className="flex justify-between items-center py-2"
+                  onClick={() => setShowSeason(!showSeason)}
+                >
+                  <div className="ml-3">Сезон</div>
+                  <img
+                    src={arrow_filters}
+                    alt="arrow_filters"
+                    className={`transition-transform duration-400 mr-3 ${
+                      !showSeason ? "rotate-0" : "rotate-180"
+                    }`}
+                  />
+                </div>
               </div>
-            </div>
 
-            <div
-              className={`overflow-hidden transition-max-height duration-500 ease-in-out ${
-                showSeason ? "max-h-40" : "max-h-0"
-              }`}
-            >
-              <div className="p-3 hover:bg-white border-l border-r border-b cursor-pointer">
-                {seasons.map((season) => (
-                  <div key={season} className="flex items-center">
-                    <input
-                      type="checkbox"
-                      id={season}
-                      onChange={() => handleSelectedSeason(season)}
-                    />
-                    <label htmlFor={season} className="ml-3 block w-full ">
-                      {season}
-                    </label>
-                  </div>
-                ))}
+              <div
+                className={`overflow-hidden transition-max-height duration-500 ease-in-out ${
+                  showSeason ? "max-h-40" : "max-h-0"
+                }`}
+              >
+                <div className="p-3 hover:bg-white border-l border-r border-b cursor-pointer">
+                  {seasons.map((season) => (
+                    <div key={season} className="flex items-center">
+                      <input
+                        type="checkbox"
+                        id={season}
+                        onChange={() => handleSelectedSeason(season)}
+                      />
+                      <label htmlFor={season} className="ml-3 block w-full ">
+                        {season}
+                      </label>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
+          )}
           {/* Фильтр по сезону */}
         </div>
       </>
