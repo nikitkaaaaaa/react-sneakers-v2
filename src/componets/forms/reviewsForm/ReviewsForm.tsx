@@ -63,14 +63,16 @@ const ReviewsForm = ({ showReviews, closeForm }: ReviewsFormProps) => {
                     Имя <span className="text-red-600 ml-1"> *</span>
                   </div>
                   {errors.name && (
-                    <div className="text-red-600">{errors.name?.message}</div>
+                    <div className="text-red-600 text-sm xs:text-base">
+                      {errors.name?.message}
+                    </div>
                   )}
                 </div>
                 <input
                   type="text"
                   className="border w-full outline-none h-[48px] p-2 pr-3.25 pb-1.5 rounded bg-[#f8f8f8]"
                   {...register("name", {
-                    required: "Имя обязательно для заполнения",
+                    required: "Заполните имя",
                   })}
                 />
               </>
@@ -81,14 +83,16 @@ const ReviewsForm = ({ showReviews, closeForm }: ReviewsFormProps) => {
                 <div className="flex justify-between items-center  text-gray-500 mt-6 mb-1">
                   <div>E-mail</div>
                   {errors.email && (
-                    <div className="text-red-600">{errors.email?.message}</div>
+                    <div className="text-red-600 text-sm xs:text-base">
+                      {errors.email?.message}
+                    </div>
                   )}
                 </div>
                 <input
                   type="email"
                   className="border w-full outline-none h-[48px] p-2 pr-3.25 pb-1.5 rounded bg-[#f8f8f8]"
                   {...register("email", {
-                    required: "E-mail обязателен для заполнения",
+                    required: "Заполните E-mail",
                   })}
                 />
               </>
@@ -99,14 +103,16 @@ const ReviewsForm = ({ showReviews, closeForm }: ReviewsFormProps) => {
                 <div className="flex justify-between items-center  text-gray-500 mt-6 mb-1">
                   <div>Телефон</div>
                   {errors.phone && (
-                    <div className="text-red-600">{errors.phone?.message}</div>
+                    <div className="text-red-600 text-sm xs:text-base">
+                      {errors.phone?.message}
+                    </div>
                   )}
                 </div>
                 <input
                   type="tel"
                   className="border w-full outline-none h-[48px] p-2 pr-3.25 pb-1.5 rounded bg-[#f8f8f8]"
                   {...register("phone", {
-                    required: "Телефон обязателен для заполнения",
+                    required: "Заполните  телефон",
                   })}
                 />
               </>
@@ -119,7 +125,7 @@ const ReviewsForm = ({ showReviews, closeForm }: ReviewsFormProps) => {
                     Текст отзыва <span className="text-red-600 ml-1"> *</span>
                   </div>
                   {errors.message && (
-                    <div className="text-red-600">
+                    <div className="text-red-600 text-sm xs:text-base">
                       {errors.message?.message}
                     </div>
                   )}

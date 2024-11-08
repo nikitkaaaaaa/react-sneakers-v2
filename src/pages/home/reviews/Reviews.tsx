@@ -67,10 +67,13 @@ const Reviews = () => {
         </div>
         {/* Вывод каротчек отзывов */}
       </div>
+
+      {/* Форма для отправки отзыва */}
       <ReviewsForm
         showReviews={showReviews}
         closeForm={() => setShowReviews(false)}
       />
+      {/* Форма для отправки отзыва */}
     </div>
   );
 };
