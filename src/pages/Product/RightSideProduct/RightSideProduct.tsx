@@ -130,7 +130,7 @@ const RightSideProduct = ({
           >
             <div className="font-bold py-1">{item} EU</div>
             <div className="text-sm">
-              {index % 2 == 0 ? price : price && price * 1.05} ₽
+              {index % 2 == 0 ? price : price && Math.round(price * 1.05)} ₽
             </div>
           </div>
         ))}

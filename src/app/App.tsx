@@ -1,5 +1,4 @@
 import React from "react";
-
 import { Link, Route, Routes } from "react-router-dom";
 
 import "../app/global.css";
@@ -28,7 +27,7 @@ const App = () => {
     <>
       <Header />
       <div className="container flex justify-center">
-        <div className="my-5 inline-flex gap-12 font-bosld  ">
+        <div className="category_products">
           {routesCategoryProducts.map((item, index) => (
             <Link
               key={index}
