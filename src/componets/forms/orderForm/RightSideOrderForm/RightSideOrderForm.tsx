@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 
 import style from "../orderForm.module.css";
+import arrow_cart from "../../../../assets/icons/arrow_cart.svg";
 
 interface RightSideOrderFormProps {
   totalPrice: number;
@@ -21,11 +22,18 @@ const RightSideOrderForm = ({ totalPrice }: RightSideOrderFormProps) => {
         <div>Доставка</div>
         <div className="text-green-600">бесплатно</div>
       </div>
-      <input
-        type="text"
-        className="w-full  border outline-none bg-[#f8f8f8] mt-5 py-[9px] pr-[35px] pb-[9px] pl-[12px] rounded"
-        placeholder="Есть промокод?"
-      />
+      <div className="relative mt-5">
+        <input
+          type="text"
+          className="w-full outline-none border rounded  h-[42px] pt-[8px] pr-[13px] pb-[7px] pl-[13px] bg-[#f8f8f8]"
+          placeholder="Eсть промокод?"
+        />
+        <img
+          src={arrow_cart}
+          alt="arrow"
+          className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
+        />
+      </div>
 
       <button className="border border-black bg-black text-white w-full text-xs py-3.5 rounded mt-7">
         ОФОРМИТЬ ЗАКАЗ

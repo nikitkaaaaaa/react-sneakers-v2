@@ -1,9 +1,9 @@
 import React, { useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 
 import style from "../cart.module.css";
+import arrow_cart from "../../../assets/icons/arrow_cart.svg";
 import InerfaceCart from "../../../api/cartApi/InerfaceCart";
-import BuyProduct from "../../../componets/sections/BuyProduct";
-import { useNavigate } from "react-router-dom";
 import { routes } from "../../../routes/routes";
 
 interface RightSideCartProps {
@@ -30,11 +30,20 @@ const RightSideCart = ({ products }: RightSideCartProps) => {
           <div>{totalPrice}₽</div>
         </div>
 
-        <BuyProduct
-          style={"border w-full text-sm rounded border border-black py-2 mt-6"}
-        />
+        <div className="relative">
+          <input
+            type="text"
+            className="w-full outline-none border rounded  h-[42px] pt-[8px] pr-[13px] pb-[7px] pl-[13px]"
+            placeholder="Eсть промокод?"
+          />
+          <img
+            src={arrow_cart}
+            alt="arrow"
+            className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
+          />
+        </div>
         <button
-          className="border w-full text-sm rounded bg-black text-white py-2.5 border border-black mt-4"
+          className=" w-full text-sm rounded bg-black text-white py-2.5 border border-black mt-4"
           onClick={() => {
             navigate(routes.order);
             window.scrollTo({ top: 0 });

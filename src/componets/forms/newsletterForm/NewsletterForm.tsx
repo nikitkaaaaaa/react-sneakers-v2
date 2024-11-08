@@ -67,7 +67,9 @@ const NewsletterForm = ({ showNewsLetter, closeForm }: NewsletterFormProps) => {
                   </div>
                 </div>
               </div>
+
               <form onSubmit={handleSubmit(handleOnSubmit)}>
+                {/* email */}
                 <input
                   type="email"
                   className="w-full outline-none border rounded  h-[48px] pt-[8px] pr-[13px] pb-[7px] pl-[13px] bg-[#f8f8f8]"
@@ -75,6 +77,8 @@ const NewsletterForm = ({ showNewsLetter, closeForm }: NewsletterFormProps) => {
                     required: "Заполните это поле",
                   })}
                 />
+                {/* email */}
+
                 <div className="mt-14">
                   <button
                     type="submit"
