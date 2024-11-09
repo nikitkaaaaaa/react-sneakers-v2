@@ -3,9 +3,21 @@ import BuyProductForm from "../forms/buyProductForm/BuyProductForm";
 
 interface BuyProductProps {
   style: string;
+  price: number | undefined;
+  brand: string | undefined;
+  title: string | undefined;
+  imageUrl: string | undefined;
+  id: string | undefined;
 }
 
-const BuyProduct = ({ style }: BuyProductProps) => {
+const BuyProduct = ({
+  style,
+  price,
+  brand,
+  title,
+  imageUrl,
+  id,
+}: BuyProductProps) => {
   const [showFormBuyProduct, setShowFormBuyProduct] = useState<boolean>(false);
 
   return (
@@ -16,6 +28,11 @@ const BuyProduct = ({ style }: BuyProductProps) => {
       <BuyProductForm
         showFormBuyProduct={showFormBuyProduct}
         closeForm={() => setShowFormBuyProduct(false)}
+        price={price ?? 0}
+        brand={brand ?? ""}
+        title={title ?? ""}
+        imageUrl={imageUrl ?? ""}
+        id={id ?? ""}
       />
     </div>
   );

@@ -157,6 +157,11 @@ const RightSideProduct = ({
           style={
             "w-full text-center text-white bg-black mt-2 rounded py-4  text-xs"
           }
+          price={price}
+          brand={brand}
+          title={title}
+          imageUrl={imageUrl}
+          id={id}
         />
       </>
       {/* Покупка продукта */}

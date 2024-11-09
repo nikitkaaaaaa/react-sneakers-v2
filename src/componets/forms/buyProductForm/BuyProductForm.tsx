@@ -6,15 +6,26 @@ import { useForm } from "react-hook-form";
 import InertfaceBuyProductForm from "./InertfaceBuyProductForm";
 import useClickOutside from "../../hooks/useCloseBlock";
 import useDisableScroll from "../../hooks/useDisableScroll";
+import { useAddProductToPurchasedProductsMutation } from "../../../api/purchasedProductsApi/purchasedProductsApi";
 
 interface BuyProductFormProps {
   showFormBuyProduct: boolean;
   closeForm: () => void;
+  price: number;
+  brand: string;
+  title: string;
+  imageUrl: string;
+  id: string;
 }
 
 const BuyProductForm = ({
   showFormBuyProduct,
   closeForm,
+  price,
+  brand,
+  title,
+  imageUrl,
+  id,
 }: BuyProductFormProps) => {
   const {
     register,
@@ -31,14 +42,45 @@ const BuyProductForm = ({
     { title: "Facebook", value: "facebook" },
   ];
 
+  const [addProductToPurchasedProducts] =
+    useAddProductToPurchasedProductsMutation();
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedMethod(event.target.value);
   };
 
-  const handleOnSubmit = (data: InertfaceBuyProductForm) => {
-    console.log(data);
+  const handleOnSubmit = async (data: InertfaceBuyProductForm) => {
     closeForm();
+
     reset();
+
+    try {
+      setTimeout(() => {
+        alert("Вы оформили товар!");
+      }, 1500);
+
+      const product = {
+        title,
+        brand,
+        size: "37",
+        imageUrl,
+        count: 1,
+        id,
+        parentId: Number(id),
+      };
+
+      const obj = {
+        products: product,
+        totalPrice: price,
+        name: data.name,
+        phone: data.phone,
+        massage: data.message,
+      };
+
+      await addProductToPurchasedProducts(obj).unwrap();
+    } catch (error) {
+      alert("Не удалось купить продукт!");
+    }
   };
 
   const formRef = useRef<HTMLDivElement>(null);

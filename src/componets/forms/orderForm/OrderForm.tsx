@@ -58,13 +58,14 @@ const OrderForm = () => {
   const handleOnSubmit = async (data: interfaceOrderForm) => {
     try {
       navigate(routes.home);
+      window.scrollTo({ top: 0 });
       setTimeout(() => {
         alert("Вы оформили корзину!");
       }, 1500);
       reset();
       handleClearCart();
 
-      await addProductToPurchasedProducts({
+      const products = {
         products: cartProducts || [],
         totalPrice: totalPrice,
         name: data.name,
@@ -73,7 +74,9 @@ const OrderForm = () => {
         massage: data.message,
         deliveryAddress: data.deliveryAddress,
         promotionalСode: data.promotionalСode,
-      }).unwrap();
+      };
+
+      await addProductToPurchasedProducts(products).unwrap();
     } catch (error) {
       setTimeout(() => {
         alert("Не удалось оформить!");
