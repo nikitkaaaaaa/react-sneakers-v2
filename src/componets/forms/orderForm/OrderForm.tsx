@@ -63,6 +63,7 @@ const OrderForm = () => {
       }, 1500);
       reset();
       handleClearCart();
+
       await addProductToPurchasedProducts({
         products: cartProducts || [],
         totalPrice: totalPrice,
@@ -71,6 +72,7 @@ const OrderForm = () => {
         email: data.email,
         massage: data.message,
         deliveryAddress: data.deliveryAddress,
+        promotionalСode: data.promotionalСode,
       }).unwrap();
     } catch (error) {
       setTimeout(() => {
@@ -84,7 +86,7 @@ const OrderForm = () => {
       <form className=" mt-5" onSubmit={handleSubmit(handleOnSubmit)}>
         <div className={style.container_order_form}>
           <LeftSIdeOrderForm register={register} errors={errors} />
-          <RightSideOrderForm totalPrice={totalPrice} />
+          <RightSideOrderForm totalPrice={totalPrice} register={register} />
         </div>
         <div className="flex justify-between">
           <DeliveryMethod register={register} errors={errors} />

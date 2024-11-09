@@ -25,6 +25,9 @@ const App = () => {
 
   return (
     <>
+      <div className="text-5xl">
+        сделать чтобы при оформаления заказ учитывался промокод
+      </div>
       <Header />
       <div className="container flex justify-center">
         <div className="category_products">

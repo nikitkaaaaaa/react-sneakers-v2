@@ -4,4 +4,5 @@ export default interface interfaceOrderForm {
   email: string;
   deliveryAddress: string;
   message: string;
+  promotionalСode: string;
 }

@@ -8,4 +8,5 @@ export default interface InterfacepurchasedProducts {
   email: string;
   massage?: string;
   deliveryAddress?: string;
+  promotionalСode?: string;
 }

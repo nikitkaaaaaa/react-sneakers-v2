@@ -2,12 +2,18 @@ import React, { useMemo } from "react";
 
 import style from "../orderForm.module.css";
 import arrow_cart from "../../../../assets/icons/arrow_cart.svg";
+import { UseFormRegister } from "react-hook-form";
+import interfaceOrderForm from "../interfaceOrderForm/InterfaceOrderForm";
 
 interface RightSideOrderFormProps {
   totalPrice: number;
+  register: UseFormRegister<interfaceOrderForm>;
 }
 
-const RightSideOrderForm = ({ totalPrice }: RightSideOrderFormProps) => {
+const RightSideOrderForm = ({
+  totalPrice,
+  register,
+}: RightSideOrderFormProps) => {
   return (
     <div className={style.rightSideOrderForm}>
       <div className=" flex justify-between items-center font-bold text-lg">
@@ -25,8 +31,9 @@ const RightSideOrderForm = ({ totalPrice }: RightSideOrderFormProps) => {
       <div className="relative mt-5">
         <input
           type="text"
-          className="w-full outline-none border rounded  h-[42px] pt-[8px] pr-[13px] pb-[7px] pl-[13px] bg-[#f8f8f8]"
+          className="w-full outline-none border rounded  h-[42px] pt-[8px] pr-[53px] pb-[7px] pl-[13px] bg-[#f8f8f8]"
           placeholder="Eсть промокод?"
+          {...register("promotionalСode")}
         />
         <img
           src={arrow_cart}
