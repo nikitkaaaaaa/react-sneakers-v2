@@ -93,7 +93,7 @@ const BuyProductForm = ({
     <>
       {showFormBuyProduct && (
         <div className={style.blur}>
-          <div className={style.byProductForm} ref={formRef}>
+          <div className={style.by_product_form} ref={formRef}>
             <div className="flex justify-end  mt-5">
               <img
                 src={close_form}

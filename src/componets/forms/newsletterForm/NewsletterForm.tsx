@@ -45,10 +45,10 @@ const NewsletterForm = ({ showNewsLetter, closeForm }: NewsletterFormProps) => {
     <>
       {showNewsLetter && (
         <div className={style.blur}>
-          <div className={style.newsletterForm} ref={formRef}>
+          <div className={style.news_letter_form} ref={formRef}>
             <div className=" relative pt-[55px] pr-[75px] pb-[2.5px] pl-[60px]">
               <div className="flex justify-between items-center">
-                <div className="text-2xl  ">Подписка на рассылку</div>
+                <div className="text-2xl ">Подписка на рассылку</div>
                 <img
                   src={closeFormImg}
                   alt="closeForm"
@@ -79,6 +79,7 @@ const NewsletterForm = ({ showNewsLetter, closeForm }: NewsletterFormProps) => {
                 />
                 {/* email */}
 
+                {/* Кнопка */}
                 <div className="mt-14">
                   <button
                     type="submit"
@@ -87,6 +88,7 @@ const NewsletterForm = ({ showNewsLetter, closeForm }: NewsletterFormProps) => {
                     ПОДПИСАТЬСЯ
                   </button>
                 </div>
+                {/* Кнопка */}
               </form>
             </div>
           </div>

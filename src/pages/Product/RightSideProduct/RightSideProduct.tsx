@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import style from "../product.module.css";
-import { infoProduct, size, socials } from "../arrs/arrs";
+import { size, socials } from "../arrs/arrs";
 import asics from "../../../assets/png/asics";
 import nike from "../../../assets/png/nike";
 import adidas from "../../../assets/png/adidas";

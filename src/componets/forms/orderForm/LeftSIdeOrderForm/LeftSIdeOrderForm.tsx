@@ -25,7 +25,7 @@ const LeftSIdeOrderForm = ({ register, errors }: LeftSIdeOrderFormProps) => {
   };
 
   return (
-    <div className={style.leftSideOrderForm}>
+    <div className={style.left_side_order_form}>
       <div
         className={`py-[30px] px-[27px] h-full rounded ${
           hasAnyError ? "border border-red-600" : "border border-white"

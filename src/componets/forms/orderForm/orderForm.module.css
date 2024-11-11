@@ -3,21 +3,21 @@
   justify-content: space-between;
 }
 
-.leftSideOrderForm {
+.left_side_order_form {
   width: 75%;
   border: 1px solid #ececec;
   margin-right: 30px;
   border-radius: 4px;
 }
 
-.rightSideOrderForm {
+.right_side_order_form {
   width: 25%;
   border: 1px solid #ececec;
   border-radius: 4px;
   padding: 30px 27px;
 }
 
-.deliveryMethod {
+.delivery_method {
   width: 75%;
   border-radius: 4px;
   margin-top: 30px;
@@ -31,9 +31,9 @@
     flex-direction: column;
   }
 
-  .deliveryMethod,
-  .leftSideOrderForm,
-  .rightSideOrderForm {
+  .delivery_method,
+  .left_side_order_form,
+  .right_side_order_form {
     width: 100%;
     margin: 15px 0px;
   }

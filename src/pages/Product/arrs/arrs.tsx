@@ -7,7 +7,7 @@ export const size: number[] = [
   46.5, 47.5,
 ];
 
-export const socials = [
+export const socials: { title: string; img: string; route: string }[] = [
   {
     title: "Telegram",
     img: telegram.telegram,

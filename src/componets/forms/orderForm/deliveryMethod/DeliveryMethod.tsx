@@ -1,17 +1,16 @@
 import React from "react";
 
 import style from "../orderForm.module.css";
-import { FieldErrors, UseFormRegister } from "react-hook-form";
+import { UseFormRegister } from "react-hook-form";
 import interfaceOrderForm from "../interfaceOrderForm/InterfaceOrderForm";
 
 interface DeliveryMethodProps {
   register: UseFormRegister<interfaceOrderForm>;
-  errors: FieldErrors<interfaceOrderForm>;
 }
 
-const DeliveryMethod = ({ register, errors }: DeliveryMethodProps) => {
+const DeliveryMethod = ({ register }: DeliveryMethodProps) => {
   return (
-    <div className={style.deliveryMethod}>
+    <div className={style.delivery_method}>
       <div className="text-xl">Способ доставки</div>
       <div className="mt-7">
         <div className="mb-2 text-sm  text-gray-500">Адрес доставки</div>

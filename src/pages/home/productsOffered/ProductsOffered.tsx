@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { routes } from "../../../routes/routes";
 
 const ProductsOffered = () => {
-  const arr: {
+  const infoBrands: {
     title: string;
     brand: string;
     imageUrl: string;
@@ -46,7 +46,7 @@ const ProductsOffered = () => {
 
   return (
     <div className={style.products_offered}>
-      {arr.map((item, index) => (
+      {infoBrands.map((item, index) => (
         <div className={`${style.products_offered_item} shadow`} key={index}>
           <div className=" w-[100%] lg:w-[40%] text-center flex flex-col justify-center items-center">
             <div className="uppercase text-sm mt-5 lg:mt-0">{item.title}</div>

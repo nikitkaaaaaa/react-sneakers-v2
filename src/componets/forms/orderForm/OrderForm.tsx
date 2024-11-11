@@ -92,7 +92,7 @@ const OrderForm = () => {
           <RightSideOrderForm totalPrice={totalPrice} register={register} />
         </div>
         <div className="flex justify-between">
-          <DeliveryMethod register={register} errors={errors} />
+          <DeliveryMethod register={register} />
           <div className="w-[0%]  md:w-[25%]"></div>
         </div>
       </form>

@@ -15,7 +15,7 @@ const RightSideOrderForm = ({
   register,
 }: RightSideOrderFormProps) => {
   return (
-    <div className={style.rightSideOrderForm}>
+    <div className={style.right_side_order_form}>
       <div className=" flex justify-between items-center font-bold text-lg">
         <div>Итого:</div>
         <div>{totalPrice} ₽</div>
@@ -28,6 +28,8 @@ const RightSideOrderForm = ({
         <div>Доставка</div>
         <div className="text-green-600">бесплатно</div>
       </div>
+
+      {/* Промокод */}
       <div className="relative mt-5">
         <input
           type="text"
@@ -41,10 +43,14 @@ const RightSideOrderForm = ({
           className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
         />
       </div>
+      {/* Промокод */}
 
+      {/* Кнопка оформления заказа */}
       <button className="border border-black bg-black text-white w-full text-xs py-3.5 rounded mt-7">
         ОФОРМИТЬ ЗАКАЗ
       </button>
+      {/* Кнопка оформления заказа */}
+
       <div className="text-center text-sm mt-8">
         Оформляя заказ, Вы подтверждаете согласие с{" "}
         <span className="text-red-800">

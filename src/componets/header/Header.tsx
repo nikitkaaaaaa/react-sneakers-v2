@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import style from "../header/header.module.css";
 import favorites from "../../assets/icons/favorites.svg";
 import logo from "../../assets/icons/logo.svg";
-import user from "../../assets/icons/user.svg";
 import cart from "../../assets/icons/cart.svg";
 import loupe from "../../assets/icons/loupe.svg";
 import clear_text from "../../assets/icons/clear_text.svg";

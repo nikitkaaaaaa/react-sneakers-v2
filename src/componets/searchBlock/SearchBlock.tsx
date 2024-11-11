@@ -25,7 +25,7 @@ const SearchBlock = ({
   return (
     <>
       {showSearchBlock && (
-        <div className={style.searchBlock} ref={formRef}>
+        <div className={style.search_block} ref={formRef}>
           <div className=" max-h-[300px] overflow-auto border-b border-l border-r ">
             {products?.map((item) => (
               <Link

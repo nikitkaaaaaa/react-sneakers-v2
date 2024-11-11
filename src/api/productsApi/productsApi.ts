@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+
 import IntefraceProducts from "./IntefraceProducts";
 
 export const productsApi = createApi({

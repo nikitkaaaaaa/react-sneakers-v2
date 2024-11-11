@@ -62,7 +62,7 @@ const ConsultationForm = ({
     <>
       {showСonsultation && (
         <div className={style.blur}>
-          <div className={style.consultationForm} ref={formRef}>
+          <div className={style.consultation_form} ref={formRef}>
             <div className="flex justify-end">
               <img
                 src={closeFormConsuiltation}
